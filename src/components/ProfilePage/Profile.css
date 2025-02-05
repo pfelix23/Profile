@@ -55,7 +55,7 @@ h1 > p {
     height: 3px;
     background-color: rgb(23, 107, 155); 
 }
-.underline {
+.underline-95 {
     position: relative;
     padding-bottom: 2.5%;
     margin-bottom: 2%;
@@ -65,12 +65,50 @@ h1 > p {
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
 }
-.underline::after {
+.underline-90 {
+    position: relative;
+    padding-bottom: 2.5%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+.underline-85 {
+    position: relative;
+    padding-bottom: 2.5%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+.underline-95::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; 
+    width: 95%; 
+    height: 7.5px;
+    background-color: rgb(23, 107, 155); 
+}
+.underline-90::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%; 
+    height: 7.5px;
+    background-color: rgb(23, 107, 155); 
+}
+.underline-85::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 85%; 
     height: 7.5px;
     background-color: rgb(23, 107, 155); 
 }
@@ -130,9 +168,9 @@ h1 > p {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border-radius: 15px;
 }
 .elite-section {
-    width: 23%; 
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -152,4 +190,12 @@ h1 > p {
     gap: 20px; 
     justify-content: center; 
     width: 100%; 
+ }
+ .summary {
+    font-size: 26px;
+    line-height: 1.4;
+ }
+ .resume {
+    text-decoration: none;
+    color: #20A4F3;
  }

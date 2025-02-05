@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef } from 'react';
+import { createContext, useContext, useRef } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Profile from './components/ProfilePage/Profile';
 

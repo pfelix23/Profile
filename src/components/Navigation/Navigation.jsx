@@ -18,7 +18,6 @@ function Navigation() {
         setActive(view)
         setSwitchActive(view)
     };
-
        
     return (
         <div id='root-div'>
