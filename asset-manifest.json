@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.31d6cfe0.js",
-    "index.html": "/portfolio/index.html"
+    "main.js": "/Profile/static/js/main.31d6cfe0.js",
+    "index.html": "/Profile/index.html"
   },
   "entrypoints": [
     "static/js/main.31d6cfe0.js"
