@@ -71,7 +71,7 @@ function Profile() {
             <br /> <br /> ● New York, NY
             <br /> <br /> ● (718) 736-3969
             <br /> <br /> ● peter.felix23@gmail.com
-            <br /> <br /> ● <a href="https://drive.google.com/file/d/1uvsSYxGzg2brLmZOsHrfF0MhnCE5YP9W/view?usp=sharing" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
+            <br /> <br /> ● <a href="https://drive.google.com/file/d/1y2n01iJp6XwLGaD3B2_CBfQi1T5z-keZ/view?usp=sharing" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
             Studied and gained hands on experience in computer science, web development, and software engineering. Planned, developed, and deployed full-stack projects in both group and individual work settings. Gained daily experience using common programming languages with attention to modern development methodologies such as Object-Oriented-Programming. Technologies learned: Javascript, Python, React, SQL & NoSQL, Express and PostgreSQL.</p></span></div><div style={{display: 'flex', flexDirection:'column', width:'46%'}}><span><h2 className='half-underline'>Projects</h2><p style={{lineHeight:'1.4', color:'#3e3f41'}}><h4 style={{color:'black', marginBottom:'-5px'}}>EquiTrack</h4> 
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p> <p>The application utilizes (PostgreSQL, Express.js, React, Node, Chart.js). The goal was to create a financial platform that could track your assets/finances, give recommendations and predict investments.</p></span>
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p><p>EquiTrack uses Chart.js to give visual representations of all metrics while providing descriptions of the ratios and metrics it tracks.</p> </span>
@@ -105,7 +105,7 @@ function Profile() {
                     href = 'https://equitrack-5ecf.onrender.com'
                 } else if (all === 'Screenshot 2025-02-04 132501.png' || all === 'Screenshot 2025-02-04 132437.png' || all === 'Screenshot 2025-02-04 132605.png' || all === 'Screenshot 2025-02-04 132735.png'){
                     href = 'https://elitebnb-vwec.onrender.com'
-                }  else if (all === 'Screenshot 2025-02-04 133300.png' || all === 'Screenshot 2025-02-04 133429.png' || all === 'Screenshot 2025-02-04 133451.png' || all === 'Screenshot 2025-02-04 133535.png'){
+                } else if (all === 'Screenshot 2025-02-04 133300.png' || all === 'Screenshot 2025-02-04 133429.png' || all === 'Screenshot 2025-02-04 133451.png' || all === 'Screenshot 2025-02-04 133535.png'){
                     href = 'https://flux-p.onrender.com'
                 }
                 return(<picture  className='elite-section' key={index}>

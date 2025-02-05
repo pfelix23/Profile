@@ -133,7 +133,7 @@ h1 > p {
     margin-top: .3%;
     margin-left: 1%;
 }
-.contact-icon:hover {
+.icons > span:hover >.contact-icon{
     color: white;
     background-color: #20A4F3 ;
     border-radius: 50%;
