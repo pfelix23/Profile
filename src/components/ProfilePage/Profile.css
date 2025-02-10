@@ -199,3 +199,17 @@ h1 > p {
     text-decoration: none;
     color: #20A4F3;
  }
+ .github {
+    text-decoration: none;
+    color: #20A4F3;
+ }
+ .resume:hover {
+    color: #1c77ac;
+
+ }
+ .github:hover {
+    color: #1c77ac;
+ }
+ .resume-section {
+    transition: 1s opacity ease-in-out;
+ }

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { MdArrowForwardIos } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import { GiEnvelope } from "react-icons/gi";
 import { IoPhonePortraitOutline } from "react-icons/io5";
@@ -51,8 +50,7 @@ function Profile() {
             <h3 style={{fontSize:'26px', color: 'rgb(23, 107, 155)'}}>Web Developer.</h3>
             <p style={{fontStyle:'italic', fontSize:'16px', lineHeight:'1.4'}}>I am currently open to work. Please check out my contact info if you would like to reach out for any opportunities.</p>
             <div className='contact'>
-            <div className='info-div'><span><MdArrowForwardIos style={{fontSize: '13px', color:'#20A4F3'}} /> &nbsp;<span style={{fontWeight:'bold'}}>Phone:</span> +1 (718) 736-3969 </span> <br /> <span><MdArrowForwardIos style={{fontSize: '13px', color:'#20A4F3'}} /> &nbsp;<span style={{fontWeight:'bold'}}>City:</span> New York, NY</span></div>
-            <div className='info-div'><span><MdArrowForwardIos style={{fontSize: '13px', color:'#20A4F3'}} /> &nbsp;<span style={{fontWeight:'bold'}}>Email:</span> peter.felix23@gmail.com</span> <br /> <span><MdArrowForwardIos style={{fontSize: '13px', color:'#20A4F3'}} /> &nbsp;<span style={{fontWeight:'bold'}}>FullTime:</span> Available</span></div>
+            <span style={{lineHeight:'1.4'}}>After a long and successful career in sales, I found myself falling out of love with the work. While I had always held a passing interest in coding, it wasn&apos;t until I decided to enter my coding academy that I truly fell in love with it. The process of learning how to code was both challenging and exciting, and the more I dove into it, the more I found myself captivated. Each new concept felt like unlocking a new layer of creativity, and it quickly became clear to me that this was where my passion truly lies.</span>
             </div>
             <p style={{lineHeight:'1.4'}}>I specialize in JavaScript, and Python, with React being my preferred frontend framework. Keeping a level head is my approach when working with teams of developers, as programming can become stressful at times. I&apos;m not at all afraid to dig into the unknown and challenge myself, and I am comfortable working wherever I&apos;m needed.</p>
             </div>
@@ -61,35 +59,26 @@ function Profile() {
             <div style={{backgroundColor:'#f8f9fa'}} ref={skillsRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Skills</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'16px', color:'#3e3f41'}}>My diverse skill set in software development has been honed through extensive hands-on experience and continuous learning. These skills enable me to deliver high-quality, innovative solutions in dynamic work environments. Key competencies include:</p>
             <div style={{display: 'flex', flexDirection:'row', marginLeft:'2%'}}> 
-            <div style={{display: 'flex', flexDirection:'column', width:'47%', marginRight:'4%'}}><span className='underline-95'>JAVASCRIPT <span>95%</span></span><span className='underline-95'>CSS <span>95%</span></span><span className='underline-90'>HTML <span>90%</span></span></div>
-            <div style={{display: 'flex', flexDirection:'column', width:'47%'}}><span className='underline-90'>REACT <span>90%</span></span><span className='underline-85'>PYTHON <span>85%</span></span><span className='underline-90'>SQL <span>90%</span></span></div>
+            <div style={{display: 'flex', flexDirection:'column', width:'47%', marginRight:'4%'}}><span className='underline-95'>JAVASCRIPT <span>95%</span></span><span className='underline-95'>EXPRESS <span>95%</span></span><span className='underline-90'>HTML <span>90%</span></span><span className='underline-95'>CSS <span>95%</span></span><span className='underline-95'>NODE.JS <span>95%</span></span><span className='underline-85'>AWS S3 <span>85%</span></span><span className='underline-85'>ALEMBIC <span>85%</span></span><span className='underline-90'>SEQUELIZE <span>90%</span></span></div>
+            <div style={{display: 'flex', flexDirection:'column', width:'47%'}}><span className='underline-90'>REACT <span>90%</span></span><span className='underline-85'>PYTHON <span>85%</span></span><span className='underline-90'>SQL <span>90%</span></span><span className='underline-85'>FLASK <span>85%</span></span><span className='underline-90'>REDUX <span>90%</span></span><span className='underline-90'>POSTGRESQL <span>90%</span></span><span className='underline-90'>CHART.JS <span>90%</span></span><span className='underline-85'>SQLALCHEMY <span>85%</span></span></div>
             </div>
             </div>
-            <div ref={resumeRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Resume</h2>
+            <div className='resume-section' ref={resumeRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Resume</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41'}}>Software Engineer with experience developing full-stack web applications. Specialized in full-stack/front-end/back-end development, dedicated to creating polished, efficient solutions that meet business needs and enhance user experiences.</p>
-            <div style={{display: 'flex', flexDirection:'row', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif'}}><div style={{display: 'flex', flexDirection:'column', width:'46%', marginRight:'4%'}}><span><h3 className='summary half-underline'>Summary</h3><h3>Peter Felix</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>Dynamic and deadline-oriented Full Stack Software Engineer with over 3 years of experience designing and delivering user-centered digital solutions from inception to refined execution.
-            <br /> <br /> ● New York, NY
-            <br /> <br /> ● (718) 736-3969
-            <br /> <br /> ● peter.felix23@gmail.com
-            <br /> <br /> ● <a href="https://drive.google.com/file/d/1y2n01iJp6XwLGaD3B2_CBfQi1T5z-keZ/view?usp=sharing" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
+            <div style={{display: 'flex', flexDirection:'row', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif'}}><div style={{display: 'flex', flexDirection:'column', width:'46%', marginRight:'4%'}}><span><h3 className='summary half-underline'>Summary</h3><h3>Peter Felix</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>Dynamic and deadline-oriented Full Stack Software Engineer with experience designing and delivering user-centered digital solutions from inception to refined execution. Github Links Below:
+            <br /> <br /> ● <a href="https://github.com/pfelix23/EquiTrack" target="_blank" rel="noreferrer" className='github'>EquiTrack</a>
+            <br /> <br /> ● <a href="https://github.com/pfelix23/Elitebnb" target="_blank" rel="noreferrer" className='github'>Elitebnb</a>
+            <br /> <br /> ● <a href="https://github.com/pfelix23/Flux_P" target="_blank" rel="noreferrer" className='github'>Flux</a>
+            <br /> <br /> ● <a href="https://drive.google.com/file/d/1z4FOwfbJ3dH8B06NjFpNnDz6QzYIdwWW/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
             Studied and gained hands on experience in computer science, web development, and software engineering. Planned, developed, and deployed full-stack projects in both group and individual work settings. Gained daily experience using common programming languages with attention to modern development methodologies such as Object-Oriented-Programming. Technologies learned: Javascript, Python, React, SQL & NoSQL, Express and PostgreSQL.</p></span></div><div style={{display: 'flex', flexDirection:'column', width:'46%'}}><span><h2 className='half-underline'>Projects</h2><p style={{lineHeight:'1.4', color:'#3e3f41'}}><h4 style={{color:'black', marginBottom:'-5px'}}>EquiTrack</h4> 
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p> <p>The application utilizes (PostgreSQL, Express.js, React, Node, Chart.js). The goal was to create a financial platform that could track your assets/finances, give recommendations and predict investments.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p><p>EquiTrack uses Chart.js to give visual representations of all metrics while providing descriptions of the ratios and metrics it tracks.</p> </span>
+            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p><p>EquiTrack utilizes Chart.js for dynamic visualizations of financial metrics with descriptive insights.</p> </span>
            <h4 style={{color:'black', marginBottom:'-5px'}}>Elitebnb</h4> 
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>This application utilizes (PostgreSQL, Express.js, React, Node). The goal was to replicate the user experience and design of Airbnb while leveraging modern technologies and adhering to industry best practices.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Elitebnb uses the tools provided in React and Redux allowing users to have a seamless experience when navigating through this application.</p></span>
+            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Elitebnb Integrates React and Redux to create a smooth, seamless user experience.</p></span>
             <h4 style={{color:'black', marginBottom:'-5px'}}>Flux</h4>  
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>The application utilizes (PostgreSQL, Flask(Python), React, Node, AWS S3). The goal was to create a social networking platform where users could like, share, comment on and upload pictures, while following friends.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Flux utilizes AWS to allow users to upload images from their PC.</p></span>
-            </p></span><span><h2 className='half-underline'>Professional Experience</h2><p style={{lineHeight:'1.4', color:'#3e3f41'}}><h4 style={{color:'black'}}>Senior Consultant II</h4> 	<h5 style={{color:'black'}}>May 2024 – August 2024</h5>
-            i-Pharm, New York, NY
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Analyzed customer data and identified upsell opportunities.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Identified key employes to target with precise business development strategies.</p></span>
-            <h4 style={{color:'black'}}>Account Executive</h4>	<h5 style={{color:'black'}}>Nov 2023 – Jan 2023</h5>
-            Nigel Frank, New York, NY
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Developed and executed a targeted sales strategy that resulted in 10% increase in new customer acquisitions.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Interfaced with C Suite exec&apos;s during process&apos;s including CEO, CFO, CMO, CTO.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Extensively networked in the SaaS ecosystem, which resulted in over 20 new opportunities in first year worth upward of 120K.</p></span>
+            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Leverages AWS S3 for image storage, allowing users to upload and manage media from their devices.</p></span>
             </p></span></div>
             </div>
             </div>
@@ -109,7 +98,7 @@ function Profile() {
                     href = 'https://flux-p.onrender.com'
                 }
                 return(<picture  className='elite-section' key={index}>
-                <a href={href}>
+                <a href={href} target="_blank" rel="noreferrer">
                 <img className='elites' src={all}
                 alt={'AllPics'}
                  />
