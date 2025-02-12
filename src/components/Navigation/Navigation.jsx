@@ -26,7 +26,7 @@ function Navigation() {
                 <div className='img-container'>
                 <img id='peter' src="/IMG_4299-cropped.jpg" alt="Peter" />
                 <span id="name">Peter Felix</span>
-                <span><span id="github-span"><a href="https://github.com/pfelix23" style={{textDecoration:'none', color:'white'}}><IoLogoGithub /></a></span>&nbsp;&nbsp;<span id="linkedIn-span"><a href="https://www.linkedin.com/in/peter-felix-3b038a174/" style={{textDecoration:'none', color:'white'}}><TfiLinkedin /></a></span></span>
+                <span><span id="github-span"><a href="https://github.com/pfelix23" target="_blank" rel="noreferrer" style={{textDecoration:'none', color:'white'}}><IoLogoGithub /></a></span>&nbsp;&nbsp;<span id="linkedIn-span"><a href="https://www.linkedin.com/in/peter-felix-3b038a174/" target="_blank" rel="noreferrer" style={{textDecoration:'none', color:'white'}}><TfiLinkedin /></a></span></span>
                 </div>
                 <div className='nav-links'>
                 <span className={`${active === 'FaHome' ? 'active' : ''}`} onClick={() => {switchButton('FaHome'); scrollToSection(homeRef)}}><FaHome className="icon"/>&nbsp;&nbsp;<span style={{fontSize:'17px'}}>Home</span></span>

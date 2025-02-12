@@ -71,3 +71,8 @@
     color: white;
     cursor: pointer;   
 }
+@media (max-width: 810px) {
+    #root-div{
+        display: none;
+    }
+}

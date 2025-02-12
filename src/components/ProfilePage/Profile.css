@@ -1,3 +1,7 @@
+.root{
+    overflow-y: scroll;
+    position: relative;
+}
 .backGround {
     width: 80.7vw;
     height: 100vh;
@@ -177,6 +181,7 @@ h1 > p {
     align-items: center; 
     text-align: center; 
     flex-wrap: wrap;
+    width: 48%;
   }
 .picture-section {
     display: flex;
@@ -187,7 +192,7 @@ h1 > p {
 .elite-card {
     display: flex;
     flex-wrap: wrap; 
-    gap: 20px; 
+    gap: 16px; 
     justify-content: center; 
     width: 100%; 
  }
@@ -213,3 +218,26 @@ h1 > p {
  .resume-section {
     transition: 1s opacity ease-in-out;
  }
+ @media (max-width: 810px) {
+    .backGround {
+        width: 100vw;
+    }
+    .portfolio-div > span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 5px;
+        padding-left: 5px;
+       
+        
+    }
+    .elite-section {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        text-align: center; 
+        flex-wrap: wrap;
+        width: 90%;
+      }
+}
