@@ -1,6 +1,7 @@
 .root{
     overflow-y: scroll;
     position: relative;
+    overflow-x: hidden;
 }
 .backGround {
     width: 80.7vw;
@@ -239,5 +240,9 @@ h1 > p {
         text-align: center; 
         flex-wrap: wrap;
         width: 90%;
-      }
+    }
+    .about-content {
+        display: flex;
+        flex-direction: column;
+    }
 }
