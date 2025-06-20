@@ -270,4 +270,10 @@ h1 > p {
         background-color: white;
         border-radius: 999px;
     }
+    .portfolio-div {
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
