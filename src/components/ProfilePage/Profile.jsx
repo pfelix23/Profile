@@ -3,6 +3,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { GiEnvelope } from "react-icons/gi";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { useAppContext } from "../../AppContext";
+import { FaArrowCircleUp } from "react-icons/fa";
 import './Profile.css';
 
 function Profile() {
@@ -14,6 +15,30 @@ function Profile() {
     const EquiTrackPics = ['Screenshot 2025-02-04 133658.png','Screenshot 2025-02-04 133716.png','Screenshot 2025-02-04 133746.png','Screenshot 2025-02-04 133805.png'];
     const ElitebnbPics = ['Screenshot 2025-02-04 132501.png','Screenshot 2025-02-04 132437.png','Screenshot 2025-02-04 132605.png', 'Screenshot 2025-02-04 132735.png'];
     const FluxPics = ['Screenshot 2025-02-04 133300.png','Screenshot 2025-02-04 133429.png','Screenshot 2025-02-04 133451.png','Screenshot 2025-02-04 133535.png'];
+    const mBoldenPics = ['Screenshot 2025-06-10 121855.png', 'Screenshot 2025-06-10 121921.png', 'Screenshot 2025-06-10 121954.png', 'Screenshot 2025-06-10 122026.png'];
+    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, scrollToSection } = useAppContext();
+    const [showArrow, setShowArrow] = useState(false);
+    useEffect(() => {
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+        
+        setShowArrow(!entry.isIntersecting && window.innerWidth <= 768);
+        },
+        {
+        root: null,
+        threshold: 0.1,
+        }
+    );
+
+    if (homeRef?.current) {
+        observer.observe(homeRef.current);
+    }
+
+    return () => {
+        if (homeRef?.current) observer.unobserve(homeRef.current);
+    };
+    }, [homeRef]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex(prevIndex => (prevIndex +1) % types.length)
@@ -21,7 +46,6 @@ function Profile() {
         return () => clearInterval(interval)
     }, [types.length]);
 
-    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef } = useAppContext();
 
     const display = () => {
         if(isActive === 'All') {
@@ -32,6 +56,8 @@ function Profile() {
             return FluxPics
         } else if (isActive === 'EquiTrack') {
             return EquiTrackPics
+        } else if (isActive === 'mBolden-Change') {
+            return mBoldenPics
         }
     };
 
@@ -69,7 +95,7 @@ function Profile() {
              ● <a href="https://github.com/pfelix23/EquiTrack" target="_blank" rel="noreferrer" className='github'>EquiTrack</a>
             <br /> <br /> ● <a href="https://github.com/pfelix23/Elitebnb" target="_blank" rel="noreferrer" className='github'>Elitebnb</a>
             <br /> <br /> ● <a href="https://github.com/pfelix23/Flux_P" target="_blank" rel="noreferrer" className='github'>Flux</a>
-            <br /> <br /> ● <a href="https://drive.google.com/file/d/1OLTFqFvMaPilhkwRfngTK2JQwtsIK32o/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
+            <br /> <br /> ● <a href="https://drive.google.com/file/d/16yefXAsLdPwQEP1wF8YHDvfm6_fPoy5-/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
             Studied and gained hands on experience in computer science, web development, and software engineering. Planned, developed, and deployed full-stack projects in both group and individual work settings. Gained daily experience using common programming languages with attention to modern development methodologies such as Object-Oriented-Programming. Technologies learned: Javascript, Python, React, SQL & NoSQL, Express and PostgreSQL.</p></span></div><div style={{display: 'flex', flexDirection:'column', width:'46%'}}><span><h2 className='half-underline'>Projects</h2><p style={{lineHeight:'1.4', color:'#3e3f41'}}><h4 style={{color:'black', marginBottom:'-5px'}}>EquiTrack</h4> 
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p> <p>The application utilizes (PostgreSQL, Express.js, React, Node, Chart.js). The goal was to create a financial platform that could track your assets/finances, give recommendations and predict investments.</p></span>
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p><p>EquiTrack utilizes Chart.js for dynamic visualizations of financial metrics with descriptive insights.</p> </span>
@@ -85,7 +111,7 @@ function Profile() {
             <div style={{backgroundColor:'#f8f9fa'}} ref={portfolioRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Portfolio</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41', paddingRight:'5px'}}>Welcome to my portfolio! Below, you&apos;ll find a curated selection of snapshots showcasing some of the projects I&apos;ve worked on recently. Each project highlights my skills in full stack development, illustrating my expertise in both front-end and back-end technologies. Completely innovative web applications and dynamic websites , these examples demonstrate my ability to design, develop, and deploy user-centric solutions. <br /> <br />
             Feel free to explore the various projects to get a better understanding of my work process, the challenges I tackled, and the creative solutions I implemented.</p>
-            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'All'? 'active' : ''}`} onClick={() => {setActive('All'); setIsActive('All')}}>All</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {setActive('EquiTrack'); setIsActive('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {setActive('Elitebnb'); setIsActive('Elite')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {setActive('Flux'); setIsActive('Flux')}}>Flux</span></div></div>
+            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'All'? 'active' : ''}`} onClick={() => {setActive('All'); setIsActive('All')}}>All</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {setActive('EquiTrack'); setIsActive('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {setActive('Elitebnb'); setIsActive('Elite')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {setActive('Flux'); setIsActive('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {setActive('mBolden-Change'); setIsActive('mBolden-Change')}}>mBolden-Change</span></div></div>
             <section className='picture-section'>
             <div className='elite-card'>
             {display().map(((all, index) => {
@@ -96,6 +122,8 @@ function Profile() {
                     href = 'https://elitebnb-vwec.onrender.com'
                 } else if (all === 'Screenshot 2025-02-04 133300.png' || all === 'Screenshot 2025-02-04 133429.png' || all === 'Screenshot 2025-02-04 133451.png' || all === 'Screenshot 2025-02-04 133535.png'){
                     href = 'https://flux-p.onrender.com'
+                } else if (all === 'Screenshot 2025-06-10 121855.png' || all === 'Screenshot 2025-06-10 121921.png' || all === 'Screenshot 2025-06-10 121954.png' || all === 'Screenshot 2025-06-10 122026.png'){
+                    href = 'https://www.mboldenchange.org/'
                 }
                 return(<picture  className='elite-section' key={index}>
                 <a href={href} target="_blank" rel="noreferrer">
@@ -110,8 +138,14 @@ function Profile() {
             </div>
             <div ref={contactRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Contact</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41'}}>If you would like to schedule time to meet with me, please feel free to reach out via email or phone. Additionally, I can set up a time to go over any project demos as well.</p>
-            <div className='icons'><span style={{display:'flex', marginTop:'3%'}}><SlLocationPin className='contact-icon'/>&nbsp;<span>Location: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>New York, NY</span></span></span><span style={{display:'flex'}}><GiEnvelope className='contact-icon'/>&nbsp;<span>Email: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>peter.felix23@gmail.com</span></span></span><span style={{display:'flex'}}><IoPhonePortraitOutline className='contact-icon'/>&nbsp;<span>Call: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>+1 (718) 736-3969</span></span></span></div>
-            </div>              
+            <div className='icons'><span style={{display:'flex', marginTop:'3%'}}><SlLocationPin className='contact-icon'/>&nbsp;<span>Location: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>New York, NY</span></span></span><span style={{display:'flex'}}><GiEnvelope className='contact-icon'/>&nbsp;<span>Email: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>peter.felix23@gmail.com</span></span></span><span style={{display:'flex'}}><IoPhonePortraitOutline className='contact-icon'/>&nbsp;<span>Call: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>+1 (718) 736-3969</span></span></span>
+                  </div>
+            </div>   
+            {showArrow && (
+            <div className='home' onClick={() => scrollToSection(homeRef)}>
+                <FaArrowCircleUp className='arrow' />
+            </div>
+            )}
         </div>
     )
 }

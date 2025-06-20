@@ -1,5 +1,5 @@
 .root{
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     position: relative;
     overflow-x: hidden;
 }
@@ -219,6 +219,9 @@ h1 > p {
  .resume-section {
     transition: 1s opacity ease-in-out;
  }
+ .home {
+    display: none;
+ }
  @media (max-width: 810px) {
     .backGround {
         width: 100vw;
@@ -244,5 +247,27 @@ h1 > p {
     .about-content {
         display: flex;
         flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .info-text-container {
+        margin-left: 2%;
+    }
+    .home {
+        position: fixed;
+        display: flex;
+        justify-content: flex-start;
+        color: #20A4F3;
+        bottom: 65px;
+        right: 20px;
+        z-index: 9999;
+        padding: 2%;
+    }
+    .arrow {
+        height: 70px;
+        width: 70px;
+        background-color: white;
+        border-radius: 999px;
     }
 }
