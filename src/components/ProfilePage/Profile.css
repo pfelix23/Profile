@@ -60,26 +60,8 @@ h1 > p {
     height: 3px;
     background-color: rgb(23, 107, 155); 
 }
-.underline-95 {
-    position: relative;
-    padding-bottom: 2.5%;
-    margin-bottom: 2%;
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-}
-.underline-90 {
-    position: relative;
-    padding-bottom: 2.5%;
-    margin-bottom: 2%;
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-}
+.underline-95,
+.underline-90,
 .underline-85 {
     position: relative;
     padding-bottom: 2.5%;
@@ -90,32 +72,29 @@ h1 > p {
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
 }
-.underline-95::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 95%; 
-    height: 7.5px;
-    background-color: rgb(23, 107, 155); 
-}
-.underline-90::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 90%; 
-    height: 7.5px;
-    background-color: rgb(23, 107, 155); 
-}
+.underline-95::after,
+.underline-90::after,
 .underline-85::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 85%; 
+    width: 0; 
     height: 7.5px;
     background-color: rgb(23, 107, 155); 
+    border-radius: 0 20px 20px 0;
+    transition: width 2.1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.underline-95.visible::after {
+    width: 95%;
+}
+
+.underline-90.visible::after {
+    width: 90%;
+}
+
+.underline-85.visible::after {
+    width: 85%;
 }
 .icons {
     display: flex;
@@ -137,12 +116,23 @@ h1 > p {
     margin-bottom: 4%;
     margin-top: .3%;
     margin-left: 1%;
+    transition: 
+    background-color 0.3s ease,
+    color 1s ease,
+    transform 1s ease;
+}
+.icons > span {
+  transition: transform 0.25s ease;
+}
+.icons > span:hover {
+  transform: translateX(6px);
 }
 .icons > span:hover >.contact-icon{
     color: white;
     background-color: #20A4F3 ;
     border-radius: 50%;
     padding: 10px;
+    transform: scale(1.08);
 }
 .portfolio-container {
     display: flex;
@@ -174,6 +164,9 @@ h1 > p {
     align-items: center;
     justify-content: space-between;
     border-radius: 15px;
+}
+.elites:hover {
+    cursor: pointer;
 }
 .elite-section {
     margin-bottom: 20px;
@@ -222,6 +215,36 @@ h1 > p {
  .home {
     display: none;
  }
+ .fade-slide-scale {
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-slide-scale.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.typing {
+  text-decoration: underline #20A4F3;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+
  @media (max-width: 810px) {
     .backGround {
         width: 100vw;
@@ -248,6 +271,12 @@ h1 > p {
         display: flex;
         flex-direction: column;
     }
+    h1 {
+        width: fit-content;;
+    }
+    .contact-icon {
+        margin-bottom: 10%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -259,14 +288,14 @@ h1 > p {
         display: flex;
         justify-content: flex-start;
         color: #20A4F3;
-        bottom: 65px;
-        right: 20px;
+        bottom: 35px;
+        right: 10px;
         z-index: 9999;
         padding: 2%;
     }
     .arrow {
-        height: 70px;
-        width: 70px;
+        height: 39px;
+        width: 39px;
         background-color: white;
         border-radius: 999px;
     }
@@ -275,5 +304,14 @@ h1 > p {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    h1 {
+        width: fit-content;
+    }
+    div > h1 {
+        width:100%;
+    }
+    .contact-icon {
+        margin-bottom: 10%;
     }
 }

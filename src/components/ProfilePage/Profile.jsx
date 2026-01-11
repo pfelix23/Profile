@@ -5,19 +5,26 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 import { useAppContext } from "../../AppContext";
 import { FaArrowCircleUp } from "react-icons/fa";
 import './Profile.css';
+import PreviewModal from './PreviewModal';
 
 function Profile() {
-    const [index, setIndex] = useState(0);
+    const [text, setText] = useState('');
+    const [typeIndex, setTypeIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
     const [active, setActive] = useState('All');
-    const [isActive, setIsActive] = useState('All');
-    const types = ['full-stack', 'back-end', 'front-end'];
-    const AllPics = ['Screenshot 2025-02-04 133658.png','Screenshot 2025-02-04 133716.png','Screenshot 2025-02-04 133746.png','Screenshot 2025-02-04 133805.png','Screenshot 2025-02-04 132501.png','Screenshot 2025-02-04 132437.png','Screenshot 2025-02-04 132605.png', 'Screenshot 2025-02-04 132735.png', 'Screenshot 2025-02-04 133300.png','Screenshot 2025-02-04 133429.png','Screenshot 2025-02-04 133451.png','Screenshot 2025-02-04 133535.png'];
-    const EquiTrackPics = ['Screenshot 2025-02-04 133658.png','Screenshot 2025-02-04 133716.png','Screenshot 2025-02-04 133746.png','Screenshot 2025-02-04 133805.png'];
-    const ElitebnbPics = ['Screenshot 2025-02-04 132501.png','Screenshot 2025-02-04 132437.png','Screenshot 2025-02-04 132605.png', 'Screenshot 2025-02-04 132735.png'];
-    const FluxPics = ['Screenshot 2025-02-04 133300.png','Screenshot 2025-02-04 133429.png','Screenshot 2025-02-04 133451.png','Screenshot 2025-02-04 133535.png'];
-    const mBoldenPics = ['Screenshot 2025-06-10 121855.png', 'Screenshot 2025-06-10 121921.png', 'Screenshot 2025-06-10 121954.png', 'Screenshot 2025-06-10 122026.png'];
-    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, scrollToSection } = useAppContext();
+    const [isActive, setIsActive] = useState('FairJob');
     const [showArrow, setShowArrow] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalImages, setModalImages] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const types = ['full-stack', 'back-end', 'front-end'];
+    const EquiTrackPics = [{src:'Screenshot 2025-02-04 133658.png', href:"https://equitrack-5ecf.onrender.com"},{src:'Screenshot 2025-02-04 133716.png', href:"https://equitrack-5ecf.onrender.com"}, {src:'Screenshot 2025-02-04 133746.png', href:"https://equitrack-5ecf.onrender.com"}, {src:'Screenshot 2025-02-04 133805.png', href:"https://equitrack-5ecf.onrender.com"}];
+    const ElitebnbPics = [{src:'Screenshot 2025-02-04 132501.png', href: "https://elitebnb-vwec.onrender.com"},{src:'Screenshot 2025-02-04 132437.png', href: "https://elitebnb-vwec.onrender.com"},{src:'Screenshot 2025-02-04 132605.png', href: "https://elitebnb-vwec.onrender.com"}, {src:'Screenshot 2025-02-04 132735.png', href: "https://elitebnb-vwec.onrender.com"}];
+    const FluxPics = [{src:'Screenshot 2025-02-04 133300.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133429.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133451.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133535.png', href: "https://flux-p.onrender.com"}];
+    const mBoldenPics = [{src:'Screenshot 2025-06-10 121855.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 121921.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 121954.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 122026.png', href: "https://www.mboldenchange.org/"}];
+    const FairJobPics = [{src:'Screenshot 2026-01-11 101554.png', href: "https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101522.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101433.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101319.png', href:"https://www.lvcfairjob.com/"}]
+    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, scrollToSection } = useAppContext();
+    
     useEffect(() => {
     const observer = new IntersectionObserver(
         ([entry]) => {
@@ -40,32 +47,96 @@ function Profile() {
     }, [homeRef]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex(prevIndex => (prevIndex +1) % types.length)
-        }, 1600);
-        return () => clearInterval(interval)
-    }, [types.length]);
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible'); 
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        
+        const elements = document.querySelectorAll('.picture-section .fade-slide-scale, .underline-95, .underline-90, .underline-85');
+        
+        elements.forEach(element => {
+            const effect = element.getBoundingClientRect();
+            if (effect.top < window.innerHeight && effect.bottom > 0) {
+                void element.offsetWidth;
+                element.classList.add('visible');
+            } else {
+                observer.observe(element);
+            }
+        });
+
+        return () => observer.disconnect();
+    }, [isActive]);
+    
+    useEffect(() => {
+    const currentType = types[typeIndex];
+    let typingSpeed = isDeleting ? 50 : 130;
+
+    const timeout = setTimeout(() => {
+        setText(prev =>
+        isDeleting
+            ? currentType.substring(0, prev.length - 1)
+            : currentType.substring(0, prev.length + 1)
+        );
+
+        if (!isDeleting && text === currentType) {
+        setTimeout(() => setIsDeleting(true), 1000);
+        }
+
+        if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setTypeIndex((prev) => (prev + 1) % types.length);
+        }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+    }, [text, isDeleting, typeIndex, types]);
+
+    useEffect(() => {
+    const underline = document.querySelector('.typing');
+
+    if (!underline) return;
+
+    underline.classList.remove('visible');
+
+    void underline.offsetWidth;
+
+    underline.classList.add('visible');
+    }, [text]);
 
 
     const display = () => {
-        if(isActive === 'All') {
-            return AllPics
-        } else if (isActive === 'Elite') {
+        if (isActive === 'Elite') {
             return ElitebnbPics
-        } else if  (isActive === 'Flux') {
+        }  if  (isActive === 'Flux') {
             return FluxPics
-        } else if (isActive === 'EquiTrack') {
+        }  if (isActive === 'EquiTrack') {
             return EquiTrackPics
-        } else if (isActive === 'mBolden-Change') {
+        }  if (isActive === 'mBolden-Change') {
             return mBoldenPics
+        } if(isActive === 'FairJob') {
+            return FairJobPics
         }
+        else return []
     };
 
+    const openModal = (images, index) => {
+        setModalImages(images);
+        setCurrentIndex(index);
+        setIsModalOpen(true);
+    }
 
     return (
         <div className='root'>
             <div ref={homeRef}>
-            <h1>Peter Felix <p>I do <span style={{textDecoration: 'underline #20A4F3'}}>{types[index]}</span> engineering.</p></h1>
+            <h1>Peter Felix <p>I do <span className="typing">{text}<span className="cursor">|</span></span>engineering.</p></h1>
             <img src="/wallpapersden.com_76453-3840x2160.jpg" alt="wallPaper" className='backGround'/>
             </div>
             <div ref={aboutRef} className='About-div'><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>About</h2>
@@ -95,11 +166,11 @@ function Profile() {
              ● <a href="https://github.com/pfelix23/EquiTrack" target="_blank" rel="noreferrer" className='github'>EquiTrack</a>
             <br /> <br /> ● <a href="https://github.com/pfelix23/Elitebnb" target="_blank" rel="noreferrer" className='github'>Elitebnb</a>
             <br /> <br /> ● <a href="https://github.com/pfelix23/Flux_P" target="_blank" rel="noreferrer" className='github'>Flux</a>
-            <br /> <br /> ● <a href="https://drive.google.com/file/d/16yefXAsLdPwQEP1wF8YHDvfm6_fPoy5-/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
+            <br /> <br /> ● <a href="https://drive.google.com/file/d/1eig2blx0eB-0_ffafFgAZvOV8YAdmDYt/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
             Studied and gained hands on experience in computer science, web development, and software engineering. Planned, developed, and deployed full-stack projects in both group and individual work settings. Gained daily experience using common programming languages with attention to modern development methodologies such as Object-Oriented-Programming. Technologies learned: Javascript, Python, React, SQL & NoSQL, Express and PostgreSQL.</p></span></div><div style={{display: 'flex', flexDirection:'column', width:'46%'}}><span><h2 className='half-underline'>Projects</h2><p style={{lineHeight:'1.4', color:'#3e3f41'}}><h4 style={{color:'black', marginBottom:'-5px'}}>EquiTrack</h4> 
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p> <p>The application utilizes (PostgreSQL, Express.js, React, Node, Chart.js). The goal was to create a financial platform that could track your assets/finances, give recommendations and predict investments.</p></span>
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p><p>EquiTrack utilizes Chart.js for dynamic visualizations of financial metrics with descriptive insights.</p> </span>
-           <h4 style={{color:'black', marginBottom:'-5px'}}>Elitebnb</h4> 
+            <h4 style={{color:'black', marginBottom:'-5px'}}>Elitebnb</h4> 
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>This application utilizes (PostgreSQL, Express.js, React, Node). The goal was to replicate the user experience and design of Airbnb while leveraging modern technologies and adhering to industry best practices.</p></span>
             <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Elitebnb Integrates React and Redux to create a smooth, seamless user experience.</p></span>
             <h4 style={{color:'black', marginBottom:'-5px'}}>Flux</h4>  
@@ -111,28 +182,19 @@ function Profile() {
             <div style={{backgroundColor:'#f8f9fa'}} ref={portfolioRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Portfolio</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41', paddingRight:'5px'}}>Welcome to my portfolio! Below, you&apos;ll find a curated selection of snapshots showcasing some of the projects I&apos;ve worked on recently. Each project highlights my skills in full stack development, illustrating my expertise in both front-end and back-end technologies. Completely innovative web applications and dynamic websites , these examples demonstrate my ability to design, develop, and deploy user-centric solutions. <br /> <br />
             Feel free to explore the various projects to get a better understanding of my work process, the challenges I tackled, and the creative solutions I implemented.</p>
-            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'All'? 'active' : ''}`} onClick={() => {setActive('All'); setIsActive('All')}}>All</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {setActive('EquiTrack'); setIsActive('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {setActive('Elitebnb'); setIsActive('Elite')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {setActive('Flux'); setIsActive('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {setActive('mBolden-Change'); setIsActive('mBolden-Change')}}>mBolden-Change</span></div></div>
+            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {setActive('FairJob'); setIsActive('FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {setActive('EquiTrack'); setIsActive('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {setActive('Elitebnb'); setIsActive('Elite')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {setActive('Flux'); setIsActive('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {setActive('mBolden-Change'); setIsActive('mBolden-Change')}}>mBolden</span></div></div>
             <section className='picture-section'>
             <div className='elite-card'>
-            {display().map(((all, index) => {
-                let href;
-                {if(all === 'Screenshot 2025-02-04 133658.png' || all === 'Screenshot 2025-02-04 133716.png' || all === 'Screenshot 2025-02-04 133746.png' || all === 'Screenshot 2025-02-04 133805.png'){
-                    href = 'https://equitrack-5ecf.onrender.com'
-                } else if (all === 'Screenshot 2025-02-04 132501.png' || all === 'Screenshot 2025-02-04 132437.png' || all === 'Screenshot 2025-02-04 132605.png' || all === 'Screenshot 2025-02-04 132735.png'){
-                    href = 'https://elitebnb-vwec.onrender.com'
-                } else if (all === 'Screenshot 2025-02-04 133300.png' || all === 'Screenshot 2025-02-04 133429.png' || all === 'Screenshot 2025-02-04 133451.png' || all === 'Screenshot 2025-02-04 133535.png'){
-                    href = 'https://flux-p.onrender.com'
-                } else if (all === 'Screenshot 2025-06-10 121855.png' || all === 'Screenshot 2025-06-10 121921.png' || all === 'Screenshot 2025-06-10 121954.png' || all === 'Screenshot 2025-06-10 122026.png'){
-                    href = 'https://www.mboldenchange.org/'
-                }
-                return(<picture  className='elite-section' key={index}>
-                <a href={href} target="_blank" rel="noreferrer">
-                <img className='elites' src={all}
-                alt={'AllPics'}
+            {display().map(((all, index) => (
+                <picture  className='elite-section fade-slide-scale' style={{ transitionDelay: `${index * 10}ms` }} key={index}>
+                <img 
+                 className='elites'
+                 src={all.src} 
+                 alt=''
+                 onClick={()=> openModal(display(), index)}
                  />
-                 </a>
-            </picture>)}
-            }))}
+                </picture>)
+            ))}
             </div>
             </section>
             </div>
@@ -140,7 +202,14 @@ function Profile() {
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41'}}>If you would like to schedule time to meet with me, please feel free to reach out via email or phone. Additionally, I can set up a time to go over any project demos as well.</p>
             <div className='icons'><span style={{display:'flex', marginTop:'3%'}}><SlLocationPin className='contact-icon'/>&nbsp;<span>Location: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>New York, NY</span></span></span><span style={{display:'flex'}}><GiEnvelope className='contact-icon'/>&nbsp;<span>Email: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>peter.felix23@gmail.com</span></span></span><span style={{display:'flex'}}><IoPhonePortraitOutline className='contact-icon'/>&nbsp;<span>Call: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>+1 (718) 736-3969</span></span></span>
                   </div>
-            </div>   
+            </div>  
+            <PreviewModal
+            isOpen={isModalOpen}
+            images={modalImages}
+            index={currentIndex}
+            setIndex={setCurrentIndex}
+            onClose={() => setIsModalOpen(false)}
+            /> 
             {showArrow && (
             <div className='home' onClick={() => scrollToSection(homeRef)}>
                 <FaArrowCircleUp className='arrow' />
