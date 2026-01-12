@@ -232,7 +232,8 @@ h1 > p {
 .cursor {
   display: inline-block;
   margin-left: 2px;
-  animation: blink 1s infinite;
+  animation: blink .7s infinite;
+  text-decoration: underline #20A4F3;
 }
 
 @keyframes blink {

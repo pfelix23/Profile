@@ -11,7 +11,7 @@ function Profile() {
     const [text, setText] = useState('');
     const [typeIndex, setTypeIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
-    const [active, setActive] = useState('All');
+    const [active, setActive] = useState('FairJob');
     const [isActive, setIsActive] = useState('FairJob');
     const [showArrow, setShowArrow] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -77,7 +77,7 @@ function Profile() {
     
     useEffect(() => {
     const currentType = types[typeIndex];
-    let typingSpeed = isDeleting ? 50 : 130;
+    let typingSpeed = isDeleting ? 60 : 120;
 
     const timeout = setTimeout(() => {
         setText(prev =>
@@ -87,7 +87,7 @@ function Profile() {
         );
 
         if (!isDeleting && text === currentType) {
-        setTimeout(() => setIsDeleting(true), 1000);
+        setTimeout(() => setIsDeleting(true), 2000);
         }
 
         if (isDeleting && text === '') {
