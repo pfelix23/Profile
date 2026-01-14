@@ -79,7 +79,7 @@
 @media (max-width: 810px) {
     .root-div {
         position:fixed;
-        z-index: 9999; 
+        z-index: 9990; 
         transition: transform .3s ease-in-out
     }
     .nav-open {

@@ -295,6 +295,7 @@ h1 > p {
         margin-right: 7px;
         font-size: x-large;
         outline: none;
+        z-index: 9999;
     }
     .menu:hover {
         cursor: pointer;
@@ -346,6 +347,7 @@ h1 > p {
         margin-top: 10px;
         margin-right: 7px;
         outline: none;
+        z-index: 9999;
     }
     .menu:hover {
         cursor: pointer;
