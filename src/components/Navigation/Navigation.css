@@ -77,7 +77,18 @@
     cursor: pointer;   
 }
 @media (max-width: 810px) {
-    #root-div{
-        display: none;
+    .root-div {
+        position:fixed;
+        z-index: 9999; 
+        transition: transform .3s ease-in-out
+    }
+    .nav-open {
+        transform: translateX(0);
+    }
+    .nav-close{
+        transform: translateX(-100%);
+    }
+    .nav-bar {
+        width: 65vw;
     }
 }

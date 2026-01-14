@@ -4,6 +4,7 @@ import { GiEnvelope } from "react-icons/gi";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { useAppContext } from "../../AppContext";
 import { FaArrowCircleUp } from "react-icons/fa";
+import { BsList } from "react-icons/bs";
 import './Profile.css';
 import PreviewModal from './PreviewModal';
 
@@ -23,7 +24,7 @@ function Profile() {
     const FluxPics = [{src:'Screenshot 2025-02-04 133300.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133429.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133451.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133535.png', href: "https://flux-p.onrender.com"}];
     const mBoldenPics = [{src:'Screenshot 2025-06-10 121855.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 121921.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 121954.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 122026.png', href: "https://www.mboldenchange.org/"}];
     const FairJobPics = [{src:'Screenshot 2026-01-11 101554.png', href: "https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101522.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101433.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101319.png', href:"https://www.lvcfairjob.com/"}]
-    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, scrollToSection } = useAppContext();
+    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, scrollToSection, visible, setVisible } = useAppContext();
     
     useEffect(() => {
     const observer = new IntersectionObserver(
@@ -136,6 +137,9 @@ function Profile() {
     return (
         <div className='root'>
             <div ref={homeRef}>
+            <div style={{display:'flex', justifyContent:'flex-end', paddingRight:'5px'}}>
+            <BsList className='menu' onClick={() => setVisible(!visible)}  />
+            </div>
             <h1>Peter Felix <p>I do <span className="typing">{text}<span className="cursor">|</span></span>engineering.</p></h1>
             <img src="/wallpapersden.com_76453-3840x2160.jpg" alt="wallPaper" className='backGround'/>
             </div>

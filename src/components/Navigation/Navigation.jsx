@@ -13,7 +13,7 @@ import './Navigation.css';
 function Navigation() {
     const [active, setActive] = useState('FaHome');
     const [switchActive, setSwitchActive] = useState('FaHome');
-    const { scrollToSection, homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef } = useAppContext();
+    const { scrollToSection, homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, visible } = useAppContext();
     const switchButton = (view) => {
         setActive(view)
         setSwitchActive(view)
@@ -21,7 +21,7 @@ function Navigation() {
     {switchActive}
        
     return (
-        <div id='root-div'>
+        <div className={`root-div ${visible ? 'nav-open': 'nav-close'}`}>
             <nav className='nav-bar'>
                 <div className='img-container'>
                 <img id='peter' src="/IMG_4299-cropped.jpg" alt="Peter" />

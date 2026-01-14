@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef } from 'react';
+import { createContext, useContext, useRef, useState } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Profile from './components/ProfilePage/Profile';
 
@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
     const resumeRef = useRef(null);
     const portfolioRef = useRef(null);
     const contactRef = useRef(null);
+    const [visible, setVisible] = useState(false);
 
     const scrollToSection = (sectionRef) => {
         sectionRef.current.scrollIntoView({
@@ -31,6 +32,8 @@ export const AppContextProvider = ({ children }) => {
         resumeRef,
         portfolioRef,
         contactRef,
+        visible,
+        setVisible,
         scrollToSection }}>
       {children}
     </AppContext.Provider>

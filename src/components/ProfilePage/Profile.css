@@ -227,13 +227,19 @@ h1 > p {
 }
 .typing {
   text-decoration: underline #20A4F3;
+  text-decoration-thickness: 2px;    
+  display: inline; 
 }
 
 .cursor {
-  display: inline-block;
+  display: inline;
   margin-left: 2px;
   animation: blink .7s infinite;
-  text-decoration: underline #20A4F3;
+  text-decoration: inherit;
+}
+
+.menu{
+    display: none;
 }
 
 @keyframes blink {
@@ -278,6 +284,21 @@ h1 > p {
     .contact-icon {
         margin-bottom: 10%;
     }
+    .menu {
+        display: flex;
+        position: fixed; 
+        color: white;
+        padding: 7px 7px; 
+        border-radius: 50%;
+        background-color: #20A4F3;
+        margin-top: 10px;
+        margin-right: 7px;
+        font-size: x-large;
+        outline: none;
+    }
+    .menu:hover {
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 768px) {
@@ -314,5 +335,19 @@ h1 > p {
     }
     .contact-icon {
         margin-bottom: 10%;
+    }
+    .menu {
+        display: flex;
+        position: fixed; 
+        color: white;
+        padding: 5px 5px; 
+        border-radius: 50%;
+        background-color: #20A4F3;
+        margin-top: 10px;
+        margin-right: 7px;
+        outline: none;
+    }
+    .menu:hover {
+        cursor: pointer;
     }
 }
