@@ -226,16 +226,20 @@ h1 > p {
   transform: translateY(0) scale(1);
 }
 .typing {
-  text-decoration: underline #20A4F3;
-  text-decoration-thickness: 2px;    
-  display: inline; 
+  display: inline-block;              
+  text-decoration-line: underline;
+  text-decoration-color: #20A4F3;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;          
+  text-decoration-skip-ink: none;      
 }
 
+
 .cursor {
-  display: inline;
+  display: inline-block;
   margin-left: 2px;
   animation: blink .7s infinite;
-  text-decoration: inherit;
+  text-decoration: none;
 }
 
 .menu{

@@ -61,7 +61,7 @@ function Profile() {
             { threshold: 0.15 }
         );
         
-        const elements = document.querySelectorAll('.picture-section .fade-slide-scale, .underline-95, .underline-90, .underline-85');
+        const elements = document.querySelectorAll('.picture-section .fade-slide-scale, .underline-95, .underline-90, .underline-85, .About-div, .my-image');
         
         elements.forEach(element => {
             const effect = element.getBoundingClientRect();
@@ -143,10 +143,10 @@ function Profile() {
             <h1>Peter Felix <p>I do <span className="typing">{text}<span className="cursor">|</span></span>engineering.</p></h1>
             <img src="/wallpapersden.com_76453-3840x2160.jpg" alt="wallPaper" className='backGround'/>
             </div>
-            <div ref={aboutRef} className='About-div'><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>About</h2>
+            <div ref={aboutRef} className='About-div fade-slide-scale'><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>About</h2>
             <p style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'19px', color:'grey'}}>Full Stack Software Engineer. Ready to tackle new challenges!</p>
             <div className='about-content'>
-            <img className='my-image' src="/IMG_4299-cropped.jpg" alt="" />
+            <img className='my-image fade-slide-scale' src="/IMG_4299-cropped.jpg" alt="" />
             <div className='info-text-container'>
             <h3 style={{fontSize:'26px', color: 'rgb(23, 107, 155)'}}>Web Developer.</h3>
             <p style={{fontStyle:'italic', fontSize:'16px', lineHeight:'1.4', paddingRight:'5px'}}>I am currently open to work. Please check out my contact info if you would like to reach out for any opportunities.</p>
