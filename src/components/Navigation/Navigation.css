@@ -89,6 +89,27 @@
         transform: translateX(-100%);
     }
     .nav-bar {
+        width: 40vw;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .root-div {
+        position:fixed;
+        z-index: 9990; 
+        transition: transform .3s ease-in-out
+    }
+    .nav-open {
+        transform: translateX(0);
+    }
+    .nav-close{
+        transform: translateX(-100%);
+    }
+    .nav-bar {
         width: 65vw;
+        overflow-y: auto;
+        overflow-x: auto;
     }
 }
