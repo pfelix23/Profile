@@ -256,7 +256,7 @@ h1 > p {
 }
 
 
- @media (max-width: 810px) {
+ @media (max-width: 932px) {
     .backGround {
         width: 100vw;
     }
@@ -283,7 +283,8 @@ h1 > p {
         flex-direction: column;
     }
     h1 {
-        width: fit-content;;
+        width: 100vw;
+        
     }
     .contact-icon {
         margin-bottom: 10%;

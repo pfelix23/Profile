@@ -76,7 +76,7 @@
     color: white;
     cursor: pointer;   
 }
-@media (max-width: 810px) {
+@media (max-width: 932px) {
     .root-div {
         position:fixed;
         z-index: 9990; 
