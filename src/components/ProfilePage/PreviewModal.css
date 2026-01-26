@@ -36,7 +36,7 @@
   border-radius: 20px;
 }
 
-#modalButton-container {
+#modalImage-container {
   display: flex;
   justify-content: center;
   width: 98%;
@@ -49,13 +49,18 @@
   border: none;
   color: white;
   font-size: clamp(24px, 6vw, 36px);
+  height: fit-content;
 }
 
 #modal-button:hover {
   cursor: pointer;
 }
-
-
+.modalButton-container {
+  height: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

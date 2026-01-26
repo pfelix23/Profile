@@ -18,13 +18,17 @@ function PreviewModal({isOpen, images, index, onClose, setIndex}) {
         <div id="modal">
             <div id="modal-background" onClick={onClose} />
             <div id="modal-content">
-            <button id='modal-button' onClick={prev}><GrLinkPrevious/></button>
-            <div id='modalButton-container' onClick={onClose}>
+            <div className='modalButton-container'onClick={onClose}>
+            <button id='modal-button' onClick={(e) => {e.stopPropagation(); prev()}}><GrLinkPrevious/></button>
+            </div>
+            <div id='modalImage-container' onClick={onClose}>
             <a href={images[index].href} target='blank' rel='noreFerrer'>
                 <img src={images[index].src} alt="" />
             </a>
             </div>
-            <button id='modal-button' onClick={next}><GrLinkNext/></button>
+            <div className='modalButton-container' onClick={onClose}>
+            <button id='modal-button' onClick={(e) => {e.stopPropagation(); next()}}><GrLinkNext/></button>
+            </div>
             </div>
         </div> 
     )
