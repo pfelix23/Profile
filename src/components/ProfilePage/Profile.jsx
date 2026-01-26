@@ -141,6 +141,7 @@ function Profile() {
     setIsTransitioning(true);
 
     setTimeout(() => {
+        setActive(tab)
         setIsActive(tab);
         setIsTransitioning(false);
     }, 300); 
