@@ -182,7 +182,17 @@ h1 > p {
     justify-content: center; 
     flex-wrap: wrap; 
     gap: 20px; 
+    transition: opacity 300ms ease, transform 300ms ease;
  }
+ .picture-section.fade-out {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.picture-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
 .elite-card {
     display: flex;
     flex-wrap: wrap; 
@@ -358,3 +368,4 @@ h1 > p {
         cursor: pointer;
     }
 }
+

@@ -18,6 +18,7 @@ function Profile() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalImages, setModalImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false);
     const types = ['full-stack', 'back-end', 'front-end'];
     const EquiTrackPics = [{src:'Screenshot 2025-02-04 133658.png', href:"https://equitrack-5ecf.onrender.com"},{src:'Screenshot 2025-02-04 133716.png', href:"https://equitrack-5ecf.onrender.com"}, {src:'Screenshot 2025-02-04 133746.png', href:"https://equitrack-5ecf.onrender.com"}, {src:'Screenshot 2025-02-04 133805.png', href:"https://equitrack-5ecf.onrender.com"}];
     const ElitebnbPics = [{src:'Screenshot 2025-02-04 132501.png', href: "https://elitebnb-vwec.onrender.com"},{src:'Screenshot 2025-02-04 132437.png', href: "https://elitebnb-vwec.onrender.com"},{src:'Screenshot 2025-02-04 132605.png', href: "https://elitebnb-vwec.onrender.com"}, {src:'Screenshot 2025-02-04 132735.png', href: "https://elitebnb-vwec.onrender.com"}];
@@ -114,7 +115,7 @@ function Profile() {
 
 
     const display = () => {
-        if (isActive === 'Elite') {
+        if (isActive === 'Elitebnb') {
             return ElitebnbPics
         }  if  (isActive === 'Flux') {
             return FluxPics
@@ -133,6 +134,18 @@ function Profile() {
         setCurrentIndex(index);
         setIsModalOpen(true);
     }
+
+    const handleTabChange = (tab) => {
+    if (tab === isActive) return;
+
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+        setIsActive(tab);
+        setIsTransitioning(false);
+    }, 300); 
+    };
+
 
     return (
         <div className='root'>
@@ -186,17 +199,19 @@ function Profile() {
             <div style={{backgroundColor:'#f8f9fa'}} ref={portfolioRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Portfolio</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41', paddingRight:'5px'}}>Welcome to my portfolio! Below, you&apos;ll find a curated selection of snapshots showcasing some of the projects I&apos;ve worked on recently. Each project highlights my skills in full stack development, illustrating my expertise in both front-end and back-end technologies. Completely innovative web applications and dynamic websites , these examples demonstrate my ability to design, develop, and deploy user-centric solutions. <br /> <br />
             Feel free to explore the various projects to get a better understanding of my work process, the challenges I tackled, and the creative solutions I implemented.</p>
-            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {setActive('FairJob'); setIsActive('FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {setActive('EquiTrack'); setIsActive('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {setActive('Elitebnb'); setIsActive('Elite')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {setActive('Flux'); setIsActive('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {setActive('mBolden-Change'); setIsActive('mBolden-Change')}}>mBolden</span></div></div>
+            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {handleTabChange('FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {handleTabChange('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {handleTabChange('Elitebnb')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {handleTabChange('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {handleTabChange('mBolden-Change')}}>mBolden</span></div></div>
             <section className='picture-section'>
             <div className='elite-card'>
             {display().map(((all, index) => (
                 <picture  className='elite-section fade-slide-scale' style={{ transitionDelay: `${index * 10}ms` }} key={index}>
+                <section className={`picture-section ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
                 <img 
                  className='elites'
                  src={all.src} 
                  alt=''
                  onClick={()=> openModal(display(), index)}
                  />
+                 </section>
                 </picture>)
             ))}
             </div>
