@@ -144,7 +144,7 @@ function Profile() {
         setActive(tab)
         setIsActive(tab);
         setIsTransitioning(false);
-    }, 300); 
+    }, 600); 
     };
 
 
