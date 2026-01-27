@@ -74,7 +74,7 @@ function Profile() {
         });
 
         return () => observer.disconnect();
-    }, [active]);
+    }, []);
     
     useEffect(() => {
     const currentType = types[typeIndex];
