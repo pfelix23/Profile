@@ -138,10 +138,10 @@ function Profile() {
     if (tab === active) return;
 
     setIsTransitioning(true);
-
+    
     setTimeout(() => {
-        setActive(tab)
         setIsTransitioning(false);
+        setActive(tab)
     }, 400); 
     };
 
