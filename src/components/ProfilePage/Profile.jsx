@@ -27,13 +27,28 @@ function Profile() {
     const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, scrollToSection, visible, setVisible } = useAppContext();
     
     useEffect(() => {
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-        
-        setShowArrow(!entry.isIntersecting && window.innerWidth <= 768);
-        },
-        {
-        root: null,
+        const allImages = [
+            ...FairJobPics,
+            ...EquiTrackPics,
+            ...ElitebnbPics,
+            ...FluxPics,
+            ...mBoldenPics
+        ];
+
+        allImages.forEach(img => {
+            const image = new Image();
+            image.src = img.src;
+        })
+    }, []);
+    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                
+                setShowArrow(!entry.isIntersecting && window.innerWidth <= 768);
+            },
+            {
+                root: null,
         threshold: 0.1,
         }
     );
@@ -145,7 +160,6 @@ function Profile() {
     }, 400); 
     };
 
-
     return (
         <div className='root'>
             <div ref={homeRef}>
@@ -208,6 +222,7 @@ function Profile() {
                  className='elites'
                  src={all.src} 
                  alt=''
+                 loading='lazy'
                  onClick={()=> openModal(display(), index)}
                  />
                  </section>
