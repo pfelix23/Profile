@@ -223,6 +223,7 @@ function Profile() {
                  src={all.src} 
                  alt=''
                  loading='lazy'
+                 onLoad={(e) => e.target.classList.add('loaded')}
                  onClick={()=> openModal(display(), index)}
                  />
                  </section>

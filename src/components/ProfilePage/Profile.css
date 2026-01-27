@@ -164,6 +164,11 @@ h1 > p {
     align-items: center;
     justify-content: space-between;
     border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+.elites.loaded {
+    opacity: 1;
 }
 .elites:hover {
     cursor: pointer;
