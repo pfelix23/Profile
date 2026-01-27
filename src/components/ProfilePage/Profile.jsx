@@ -13,7 +13,6 @@ function Profile() {
     const [typeIndex, setTypeIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [active, setActive] = useState('FairJob');
-    const [isActive, setIsActive] = useState('FairJob');
     const [showArrow, setShowArrow] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalImages, setModalImages] = useState([]);
@@ -75,7 +74,7 @@ function Profile() {
         });
 
         return () => observer.disconnect();
-    }, [isActive]);
+    }, [active]);
     
     useEffect(() => {
     const currentType = types[typeIndex];
@@ -115,15 +114,15 @@ function Profile() {
 
 
     const display = () => {
-        if (isActive === 'Elitebnb') {
+        if (active === 'Elitebnb') {
             return ElitebnbPics
-        }  if  (isActive === 'Flux') {
+        }  if  (active === 'Flux') {
             return FluxPics
-        }  if (isActive === 'EquiTrack') {
+        }  if (active === 'EquiTrack') {
             return EquiTrackPics
-        }  if (isActive === 'mBolden-Change') {
+        }  if (active === 'mBolden-Change') {
             return mBoldenPics
-        } if(isActive === 'FairJob') {
+        } if(active === 'FairJob') {
             return FairJobPics
         }
         else return []
@@ -136,15 +135,14 @@ function Profile() {
     }
 
     const handleTabChange = (tab) => {
-    if (tab === isActive) return;
+    if (tab === active) return;
 
     setIsTransitioning(true);
 
     setTimeout(() => {
         setActive(tab)
-        setIsActive(tab);
         setIsTransitioning(false);
-    }, 600); 
+    }, 400); 
     };
 
 
@@ -201,11 +199,11 @@ function Profile() {
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41', paddingRight:'5px'}}>Welcome to my portfolio! Below, you&apos;ll find a curated selection of snapshots showcasing some of the projects I&apos;ve worked on recently. Each project highlights my skills in full stack development, illustrating my expertise in both front-end and back-end technologies. Completely innovative web applications and dynamic websites , these examples demonstrate my ability to design, develop, and deploy user-centric solutions. <br /> <br />
             Feel free to explore the various projects to get a better understanding of my work process, the challenges I tackled, and the creative solutions I implemented.</p>
             <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {handleTabChange('FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {handleTabChange('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {handleTabChange('Elitebnb')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {handleTabChange('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {handleTabChange('mBolden-Change')}}>mBolden</span></div></div>
-            <section className='picture-section'>
+            <section className={`picture-section ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
             <div className='elite-card'>
             {display().map(((all, index) => (
                 <picture  className='elite-section fade-slide-scale' style={{ transitionDelay: `${index * 10}ms` }} key={index}>
-                <section className={`picture-section ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
+                <section >
                 <img 
                  className='elites'
                  src={all.src} 
