@@ -41,7 +41,7 @@ function Profile() {
 
             image.decode?.().catch(() => {});
         })
-    }, [active]);
+    }, []);
     
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -78,7 +78,7 @@ function Profile() {
             { threshold: 0.15 }
         );
         
-        const elements = document.querySelectorAll('.picture-section .fade-slide-scale, .underline-95, .underline-90, .underline-85, .About-div, .my-image');
+        const elements = document.querySelectorAll('.picture-section .fade-slide-scale, .underline-95, .underline-90, .underline-85, .About-div, .my-image, .resume-section');
         
         elements.forEach(element => {
             const effect = element.getBoundingClientRect();
@@ -157,9 +157,9 @@ function Profile() {
     setIsTransitioning(true);
     
     setTimeout(() => {
-        setIsTransitioning(false);
         setActive(tab)
-    }, 400); 
+        setIsTransitioning(false);
+      }, 300); 
     };
 
     return (
@@ -192,7 +192,7 @@ function Profile() {
             <div style={{display: 'flex', flexDirection:'column', width:'47%'}}><span className='underline-90'>REACT <span>90%</span></span><span className='underline-85'>PYTHON <span>85%</span></span><span className='underline-90'>SQL <span>90%</span></span><span className='underline-85'>FLASK <span>85%</span></span><span className='underline-90'>REDUX <span>90%</span></span><span className='underline-90'>POSTGRESQL <span>90%</span></span><span className='underline-90'>CHART.JS <span>90%</span></span><span className='underline-85'>SQLALCHEMY <span>85%</span></span></div>
             </div>
             </div>
-            <div className='resume-section' ref={resumeRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Resume</h2>
+            <div className='resume-section fade-slide-scale' ref={resumeRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Resume</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41'}}>Software Engineer with experience developing full-stack web applications. Specialized in full-stack/front-end/back-end development, dedicated to creating polished, efficient solutions that meet business needs and enhance user experiences.</p>
             <div style={{display: 'flex', flexDirection:'row', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif'}}><div style={{display: 'flex', flexDirection:'column', width:'46%', marginRight:'4%'}}><span><h3 className='summary half-underline'>Summary</h3><h3>Peter Felix</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>Dynamic and deadline-oriented Full Stack Software Engineer with experience designing and delivering user-centered digital solutions from inception to refined execution. <p style={{fontWeight:'bold'}}>Github Links Below:</p>
              ● <a href="https://github.com/pfelix23/EquiTrack" target="_blank" rel="noreferrer" className='github'>EquiTrack</a>
@@ -215,24 +215,24 @@ function Profile() {
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41', paddingRight:'5px'}}>Welcome to my portfolio! Below, you&apos;ll find a curated selection of snapshots showcasing some of the projects I&apos;ve worked on recently. Each project highlights my skills in full stack development, illustrating my expertise in both front-end and back-end technologies. Completely innovative web applications and dynamic websites , these examples demonstrate my ability to design, develop, and deploy user-centric solutions. <br /> <br />
             Feel free to explore the various projects to get a better understanding of my work process, the challenges I tackled, and the creative solutions I implemented.</p>
             <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {handleTabChange('FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {handleTabChange('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {handleTabChange('Elitebnb')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {handleTabChange('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {handleTabChange('mBolden-Change')}}>mBolden</span></div></div>
-            <section className={`picture-section ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
+            <section className="picture-section" style={{opacity: isTransitioning ? 0 : 1, transition: 'opacity 300ms ease'}}>
             <div className='elite-card'>
-            {display().map(((all, index) => (
-                <picture  className='elite-section fade-slide-scale' style={{ transitionDelay: `${index * 10}ms` }} key={index}>
-                <section >
-                <img 
-                 className='elites'
-                 src={all.src} 
-                 alt=''
-                 loading='eager'
-                 decoding='async'
-                 onLoad={(e) => e.target.classList.add('loaded')}
-                 onClick={()=> openModal(display(), index)}
-                 />
-                 </section>
-                </picture>)
-            ))}
-            </div>
+                {display().map((all, index) => (
+                    <picture className='elite-section fade-slide-scale' key={index} style={{ transitionDelay: `${index * 10}ms` }}>
+                        <section>
+                            <img 
+                                className='elites'
+                                src={all.src} 
+                                alt=''
+                                loading='eager'
+                                decoding='async'
+                                onLoad={(e) => e.target.classList.add('loaded')}
+                                onClick={()=> openModal(display(), index)}
+                            />
+                        </section>
+                    </picture>
+                    ))}
+                </div>
             </section>
             </div>
             <div ref={contactRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Contact</h2>
