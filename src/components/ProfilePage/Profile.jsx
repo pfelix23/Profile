@@ -35,11 +35,13 @@ function Profile() {
             ...mBoldenPics
         ];
 
-        allImages.forEach(img => {
+        allImages.forEach(({src}) => {
             const image = new Image();
-            image.src = img.src;
+            image.src = src;
+
+            image.decode?.().catch(() => {});
         })
-    }, []);
+    }, [active]);
     
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -222,7 +224,8 @@ function Profile() {
                  className='elites'
                  src={all.src} 
                  alt=''
-                 loading='lazy'
+                 loading='eager'
+                 decoding='async'
                  onLoad={(e) => e.target.classList.add('loaded')}
                  onClick={()=> openModal(display(), index)}
                  />

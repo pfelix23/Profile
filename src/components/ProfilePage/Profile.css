@@ -165,7 +165,10 @@ h1 > p {
     justify-content: space-between;
     border-radius: 15px;
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+    transform: translateZ(0);
+    will-change: opacity;
+    transition: opacity 0.35s ease-in-out;
+    contain: layout paint;
 }
 .elites.loaded {
     opacity: 1;
