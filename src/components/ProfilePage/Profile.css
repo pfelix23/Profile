@@ -287,6 +287,9 @@ h1 > p {
 .menu{
     display: none;
 }
+.portfolio-spacing {
+    margin-bottom: 365px;
+}
 
 @keyframes blink {
   0%, 50% {
@@ -347,6 +350,9 @@ h1 > p {
     .menu:hover {
         cursor: pointer;
     }
+    .portfolio-spacing {
+        margin-bottom: 1050px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -398,6 +404,9 @@ h1 > p {
     }
     .menu:hover {
         cursor: pointer;
+    }
+    .portfolio-spacing {
+        margin-bottom: 1050px;
     }
 }
 
