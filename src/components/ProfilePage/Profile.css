@@ -184,14 +184,14 @@ h1 > p {
     text-align: center; 
     flex-wrap: wrap;
     width: 48%;
-  }
+}
 .picture-section {
     display: flex;
     justify-content: center; 
     flex-wrap: wrap; 
     gap: 20px; 
     transition: opacity 300ms ease, transform 300ms ease;
- }
+}
  .picture-section.fade-out {
   opacity: 0;
   transform: translateY(8px);
@@ -207,38 +207,65 @@ h1 > p {
     gap: 16px; 
     justify-content: center; 
     width: 100%; 
- }
- .summary {
+}
+.project-card-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 300px; 
+}
+.project-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+.project-card.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.summary {
     font-size: 26px;
     line-height: 1.4;
- }
- .resume {
+}
+.resume {
     text-decoration: none;
     color: #20A4F3;
- }
- .github {
+}
+.github {
     text-decoration: none;
     color: #20A4F3;
- }
- .resume:hover {
+}
+.resume:hover {
     color: #1c77ac;
 
- }
- .github:hover {
+}
+.github:hover {
     color: #1c77ac;
- }
- .resume-section {
+}
+.resume-section {
     transition: 1s opacity ease-in-out;
- }
- .home {
+}
+.home {
     display: none;
- }
- .fade-slide-scale {
+}
+.fade-slide-scale {
   opacity: 0;
   transform: translateY(20px) scale(0.9);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
 .fade-slide-scale.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -251,15 +278,12 @@ h1 > p {
   text-underline-offset: 4px;          
   text-decoration-skip-ink: none;      
 }
-
-
 .cursor {
   display: inline-block;
   margin-left: 2px;
   animation: blink .7s infinite;
   text-decoration: none;
 }
-
 .menu{
     display: none;
 }
@@ -274,7 +298,7 @@ h1 > p {
 }
 
 
- @media (max-width: 932px) {
+@media (max-width: 932px) {
     .backGround {
         width: 100vw;
     }
