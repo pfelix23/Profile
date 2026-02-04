@@ -310,9 +310,7 @@ h1 > p {
         justify-content: center;
         align-items: center;
         padding-right: 5px;
-        padding-left: 5px;
-       
-        
+        padding-left: 5px;  
     }
     .elite-section {
         margin-bottom: 20px;
@@ -355,6 +353,11 @@ h1 > p {
         margin-bottom: 1050px;
     }
     .elite-section > section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .portfolio-div  {
         display: flex;
         justify-content: center;
         align-items: center;
