@@ -208,7 +208,7 @@ function Profile() {
             <section className="picture-section">
                <div className='project-card-wrapper'>
                 {Object.entries(display).map(([key, images]) => (
-                    <div key={key} className={`elise-card project-card ${active === key ? 'visible' : 'hidden'}`}>
+                    <div key={key} className={`elite-card project-card ${active === key ? 'visible' : 'hidden'}`}>
                         {images.map((all, index) => (
                             <picture className='elite-section fade-slide-scale' key={index} style={{ transitionDelay: `${index * 10}ms` }}>
                                 <section>

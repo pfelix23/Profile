@@ -317,6 +317,7 @@ h1 > p {
     .elite-section {
         margin-bottom: 20px;
         display: flex;
+        justify-content: center;
         flex-direction: row;
         align-items: center; 
         text-align: center; 
@@ -352,6 +353,11 @@ h1 > p {
     }
     .portfolio-spacing {
         margin-bottom: 1050px;
+    }
+    .elite-section > section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -407,6 +413,16 @@ h1 > p {
     }
     .portfolio-spacing {
         margin-bottom: 1050px;
+    }
+    .elite-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .elite-section > section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
