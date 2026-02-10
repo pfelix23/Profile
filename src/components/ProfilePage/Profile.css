@@ -5,7 +5,7 @@
 }
 .backGround {
     width: 80.7vw;
-    height: 100vh;
+    min-height: 100svh;
     background-color: #f5f8fd;
 }
 h1 {

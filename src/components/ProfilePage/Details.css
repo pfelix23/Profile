@@ -1,7 +1,7 @@
 .root-details {
     width: 100%;
     background-color: #f5f8fd;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none; 
    -ms-overflow-style: none; 
 }
@@ -129,7 +129,8 @@
     display: flex;
     flex-direction: column;
     width: 38%;
-    height: 80vh;
+    height: auto;
+    min-height: fit-content;
 }
 .project-information {
     width: 85%;
@@ -205,6 +206,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 10px;
     }
 }
 
@@ -223,6 +225,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+            margin-bottom: 10px;
     }
     .header {
         display: flex;
