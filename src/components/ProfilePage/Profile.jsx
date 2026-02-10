@@ -5,6 +5,7 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 import { useAppContext } from "../../AppContext";
 import { FaArrowCircleUp } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
+import { VscDash } from "react-icons/vsc";
 import './Profile.css';
 import PreviewModal from './PreviewModal';
 
@@ -149,7 +150,7 @@ function Profile() {
     
     setTimeout(() => {
         setActive(tab)
-      }, 300); 
+      }, 10); 
     };
 
     return (
@@ -184,21 +185,34 @@ function Profile() {
             </div>
             <div className='resume-section fade-slide-scale' ref={resumeRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Resume</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41'}}>Software Engineer with experience developing full-stack web applications. Specialized in full-stack/front-end/back-end development, dedicated to creating polished, efficient solutions that meet business needs and enhance user experiences.</p>
-            <div style={{display: 'flex', flexDirection:'row', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif'}}><div style={{display: 'flex', flexDirection:'column', width:'46%', marginRight:'4%'}}><span><h3 className='summary half-underline'>Summary</h3><h3>Peter Felix</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>Dynamic and deadline-oriented Full Stack Software Engineer with experience designing and delivering user-centered digital solutions from inception to refined execution. <p style={{fontWeight:'bold'}}>Github Links Below:</p>
-             ● <a href="https://github.com/pfelix23/EquiTrack" target="_blank" rel="noreferrer" className='github'>EquiTrack</a>
-            <br /> <br /> ● <a href="https://github.com/pfelix23/Elitebnb" target="_blank" rel="noreferrer" className='github'>Elitebnb</a>
-            <br /> <br /> ● <a href="https://github.com/pfelix23/Flux_P" target="_blank" rel="noreferrer" className='github'>Flux</a>
-            <br /> <br /> ● <a href="https://drive.google.com/file/d/1d0YE_ABee8JwuszscZiNUaiTsbBbF2nM/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></span><span><h3>Education Full Stack Software Engineering</h3><p style={{lineHeight:'1.4', color:'#3e3f41'}}>App Academy, San Francisco, CA <br /><br />
-            Studied and gained hands on experience in computer science, web development, and software engineering. Planned, developed, and deployed full-stack projects in both group and individual work settings. Gained daily experience using common programming languages with attention to modern development methodologies such as Object-Oriented-Programming. Technologies learned: Javascript, Python, React, SQL & NoSQL, Express and PostgreSQL.</p></span></div><div style={{display: 'flex', flexDirection:'column', width:'46%'}}><span><h2 className='half-underline'>Projects</h2><p style={{lineHeight:'1.4', color:'#3e3f41'}}><h4 style={{color:'black', marginBottom:'-5px'}}>EquiTrack</h4> 
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p> <p>The application utilizes (PostgreSQL, Express.js, React, Node, Chart.js). The goal was to create a financial platform that could track your assets/finances, give recommendations and predict investments.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p><p>EquiTrack utilizes Chart.js for dynamic visualizations of financial metrics with descriptive insights.</p> </span>
-            <h4 style={{color:'black', marginBottom:'-5px'}}>Elitebnb</h4> 
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>This application utilizes (PostgreSQL, Express.js, React, Node). The goal was to replicate the user experience and design of Airbnb while leveraging modern technologies and adhering to industry best practices.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Elitebnb Integrates React and Redux to create a smooth, seamless user experience.</p></span>
-            <h4 style={{color:'black', marginBottom:'-5px'}}>Flux</h4>  
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>The application utilizes (PostgreSQL, Flask(Python), React, Node, AWS S3). The goal was to create a social networking platform where users could like, share, comment on and upload pictures, while following friends.</p></span>
-            <span style={{display:'flex'}}><p style={{ marginRight:'10px'}}>●</p>	<p>Leverages AWS S3 for image storage, allowing users to upload and manage media from their devices.</p></span>
-            </p></span></div>
+            <div className='experience'>
+                <div className='school-side'><span><h2 className='summary half-underline'>Summary</h2><div className='role-block summary-block'><h4 className="role-title summary-role">Peter Felix</h4><p style={{lineHeight:'1.4', color:'#3e3f41', marginLeft:'28px'}}>Dynamic and deadline-oriented Full Stack Software Engineer with experience designing and delivering user-centered digital solutions from inception to refined execution. <p style={{fontWeight:'bold'}}>Github Links Below:</p>
+             ● &nbsp;<a href="https://github.com/pfelix23/EquiTrack" target="_blank" rel="noreferrer" className='github'>EquiTrack</a>
+            <br /> <br /> ● &nbsp;<a href="https://github.com/pfelix23/Elitebnb" target="_blank" rel="noreferrer" className='github'>Elitebnb</a>
+            <br /> <br /> ● &nbsp;<a href="https://github.com/pfelix23/Flux_P" target="_blank" rel="noreferrer" className='github'>Flux</a>
+            <br /> <br /> ● &nbsp;<a href="https://drive.google.com/file/d/1d0YE_ABee8JwuszscZiNUaiTsbBbF2nM/view?usp=sharing" target="_blank" rel="noreferrer" className='resume'>Resume PDF</a></p></div></span><span><h2 className='summary half-underline'>Education</h2><div className='role-block'><h3 className='role-title education-role' style={{marginBottom:'-10px'}}> Full Stack Software Engineering</h3><h5 className='dates' style={{marginBottom:'-5px', paddingTop:'6px'}}>2024<VscDash style={{color:'black', marginBottom:'-1px'}}/>2025</h5><p style={{lineHeight:'1.4', color:'#3e3f41', marginLeft:'28px'}}>App Academy, San Francisco, CA <br />
+            <p>Studied and gained hands on experience in computer science, web development, and software engineering. Planned, developed, and deployed full-stack projects in both group and individual work settings. Gained daily experience using common programming languages with attention to modern development methodologies such as Object-Oriented-Programming. Technologies learned: Javascript, Python, React, SQL & NoSQL, Express and PostgreSQL.</p></p></div></span></div>
+            <div className='pro-side'><span><h2 className=' summary half-underline'>Professional Experience</h2><div className='role-block block-two'><h4 className="role-title first-role" style={{color:'black', marginBottom:'-10px', position:'relative'}}>SOFTWARE ENGINEER</h4> <h5 className='dates' style={{paddingTop:'6px'}}>2025<VscDash style={{color:'black', marginBottom:'-1px'}}/>Present</h5> <p style={{marginTop:'-8px', fontStyle:'italic', marginLeft:'28px'}}>LVC Solutions: Addison, TX (Remote)</p>
+            <span style={{display:'flex', marginTop:'-15px'}}>
+                <ul className='list-style'>
+                    <li>Designed and implemented core messaging features, including end-to-end attachment uploads, secure file previews, and cross-browser download handling using Firebase Storage, Firebase, and Blob APIs.</li><br />
+                    <li>Built reusable file preview modal with conditional routing for Office documents and internal proxying, enabling seamless in-app file viewing and downloads.</li><br />
+                    <li>Implemented an authentication-aware networking workflow, dynamically verifying connection status and managing pending, sent, and accepted states via secure API integrations.</li><br />
+                    <li>Developed a reusable connection search component with real-time filtering, dropdown state management, and outside-click detection to improve user discoverability.</li><br />
+                    <li>Collaborated with engineers to integrate production-ready UI components into a shared codebase while maintaining clean separation of concerns.</li>
+                </ul> 
+            </span>
+            </div>
+            <div className='role-block'><h4 className="role-title second-role" style={{color:'black', marginBottom:'-5px'}}>SOFTWARE ENGINEER</h4> <h5 className='dates' style={{paddingTop:'6px'}} >2025<VscDash style={{color:'black', marginBottom:'-1px'}} />2025 (Contract)</h5> <p style={{marginTop:'-8px', fontStyle:'italic', marginLeft:'28px', marginBottom:'-5px'}}>mBOLDen Change: Palo Alto, CA (Remote)</p>
+            <span style={{display:'flex'}}>
+                <ul className='list-style'>
+                    <li>Developed reusable, production-ready React components to support multimedia and navigation experiences across the platform, improving UI consistency and reducing integration time for new pages by 30%.</li><br />
+                    <li>Collaborated with stakeholders in a contract environment to rapidly deliver features aligned with product requirements, maintaining high code quality and reusability.</li>
+                </ul>
+            </span>
+            </div>
+            </span>
+            </div>
             </div>
             </div>
             <div className='portfolio-spacing' style={{backgroundColor:'#f8f9fa'}} ref={portfolioRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Portfolio</h2>

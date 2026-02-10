@@ -1,0 +1,133 @@
+.root-details {
+    width: 100%;
+    background-color: white;
+    overflow-y: scroll;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    font-family: 'Raleway', 'sans-serif';
+}
+.header > h2 {
+    font-weight: 200;
+    font-size: 28px;
+}
+.header >section > h4 {
+    font-weight: 400;
+}
+.home-details {
+    color: rgb(23, 107, 155);
+}
+.home-details:hover {
+    cursor: pointer;
+}
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: white;
+    border: 1px solid rgb(23, 107, 155);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: rgb(23, 107, 155);
+  }
+  .picture-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 10px 10px 10px; 
+  }
+  .detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .detail-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .containers {
+    display: flex; 
+    justify-content: space-between;
+    background-color: white;
+  }
+  .container-one {
+    width: 60%;
+    background-color: white;
+  }
+  .container-two {
+    display: flex;
+    flex-direction: column;
+    width: 38%;
+    height: 85vh;
+    background-color: white;
+  }
+  .project-information {
+    width: 95%;
+    height: 40%;
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 10px;
+    font-family: "Raleway", sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 30%;
+  }
+  .project-information > h2 {
+    margin-left: 15px;
+  }
+  .project-information > p {
+    margin-left: 15px;
+    line-height: 1.4;
+  }
+  .project-details {
+    padding-left: 10px;
+    font-family: "Raleway", sans-serif;
+  }
+  .project-details > p {
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+@media (max-width: 932px) {
+    .containers {
+        display: flex;
+        flex-direction: column;
+    }
+    .container-one {
+        width: fit-content;
+        height: fit-content;
+    }
+    .container-two {
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+@media (max-width: 768px) {
+   .containers {
+        display: flex;
+        flex-direction: column;
+    } 
+    .container-one {
+        width: fit-content;
+        height: fit-content;
+    }
+    .container-two {
+        width: fit-content;
+        height: fit-content;
+    }
+}
+

@@ -239,6 +239,7 @@ h1 > p {
 .summary {
     font-size: 26px;
     line-height: 1.4;
+    color: black;
 }
 .resume {
     text-decoration: none;
@@ -290,7 +291,131 @@ h1 > p {
 .portfolio-spacing {
     margin-bottom: 365px;
 }
+.experience {
+    display: flex;
+    flex-direction: row; 
+    margin-left: 2%; 
+    font-family:"Open Sans", sans-serif;
+    justify-content:start;
+    align-items:start;
+}
+.dates {
+    background-color: #b5dbf1;
+    width: fit-content;
+    padding: 5px 15px;
+    color:#545658;
+    font-family: "Open Sans", sans-serif;
+    margin-left: 28px;
+}
+.pro-side {
+    display: flex;
+    flex-direction: column;
+    width: 46%;
+    margin-right: 4%;
+    position: relative;
+    line-height: 1.4;
+    color: #3e3f41
+}
+.school-side {
+    display: flex;
+    flex-direction: column;
+    width: 46%;
+    margin-right: 4%;
+    
+}
+.role-block {
+  position: relative;
+}
 
+.role-block::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  background: rgb(23, 107, 155);
+  left: 7px;     
+  top: 17px;     
+  bottom: 0;     
+}
+.block-two::after {
+content: "";
+  position: absolute;
+  width: 2px;
+  background: rgb(23, 107, 155);
+  left: 7px;     
+  top: 18px;     
+  bottom: -25px;
+}
+.first-role {
+  position: relative;
+  margin-left: 28px;
+}
+.first-role::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid  rgb(23, 107, 155);
+
+  left: -28px;         
+  top: 50%;
+  transform: translateY(-50%);
+}
+.second-role {
+  position: relative;
+  margin-left: 28px;
+}
+.second-role::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid  rgb(23, 107, 155);
+
+  left: -28px;         
+  top: 50%;
+  transform: translateY(-50%);
+}
+.summary-role {
+  position: relative;
+  margin-left: 28px;
+}
+.summary-role::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid  rgb(23, 107, 155);
+
+  left: -28px;         
+  top: 50%;
+  transform: translateY(-50%);
+}
+.education-role {
+  position: relative;
+  margin-left: 28px;
+}
+.education-role::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid  rgb(23, 107, 155);
+
+  left: -28px;         
+  top: 50%;
+  transform: translateY(-50%);
+}
+.list-style {
+    list-style-type: '●  ';
+}
 @keyframes blink {
   0%, 50% {
     opacity: 1;
@@ -362,6 +487,39 @@ h1 > p {
         justify-content: center;
         align-items: center;
     }
+    .resume-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .experience {
+        display: flex;
+        flex-direction: column;
+        width: 95vw;
+    }
+    .school-side {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .pro-side {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .info-text-container {
+        margin-left: 2%;
+    }
+    .role-block::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: rgb(23, 107, 155);
+        left: 7px;     
+        top: 18px;     
+        bottom: 0;     
+    }
 }
 
 @media (max-width: 768px) {
@@ -426,6 +584,36 @@ h1 > p {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .resume-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .experience {
+        display: flex;
+        flex-direction: column;
+        width: 95vw;
+    }
+    .school-side {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .pro-side {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .summary-block::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: rgb(23, 107, 155);
+        left: 7px;     
+        top: 17px;     
+        bottom: 0;     
     }
 }
 
