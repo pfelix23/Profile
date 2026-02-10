@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
 import { GiEnvelope } from "react-icons/gi";
 import { IoPhonePortraitOutline } from "react-icons/io5";
@@ -7,7 +8,6 @@ import { FaArrowCircleUp } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import { VscDash } from "react-icons/vsc";
 import './Profile.css';
-import PreviewModal from './PreviewModal';
 
 function Profile() {
     const [text, setText] = useState('');
@@ -15,9 +15,7 @@ function Profile() {
     const [isDeleting, setIsDeleting] = useState(false);
     const [active, setActive] = useState('FairJob');
     const [showArrow, setShowArrow] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalImages, setModalImages] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const navigate = useNavigate();
     const types = ['full-stack', 'back-end', 'front-end'];
     const EquiTrackPics = [{src:'Screenshot 2025-02-04 133658.png', href:"https://equitrack-5ecf.onrender.com"},{src:'Screenshot 2025-02-04 133716.png', href:"https://equitrack-5ecf.onrender.com"}, {src:'Screenshot 2025-02-04 133746.png', href:"https://equitrack-5ecf.onrender.com"}, {src:'Screenshot 2025-02-04 133805.png', href:"https://equitrack-5ecf.onrender.com"}];
     const ElitebnbPics = [{src:'Screenshot 2025-02-04 132501.png', href: "https://elitebnb-vwec.onrender.com"},{src:'Screenshot 2025-02-04 132437.png', href: "https://elitebnb-vwec.onrender.com"},{src:'Screenshot 2025-02-04 132605.png', href: "https://elitebnb-vwec.onrender.com"}, {src:'Screenshot 2025-02-04 132735.png', href: "https://elitebnb-vwec.onrender.com"}];
@@ -138,12 +136,6 @@ function Profile() {
         "mBolden-Change": mBoldenPics
     };
 
-    const openModal = (images, index) => {
-        setModalImages(images);
-        setCurrentIndex(index);
-        setIsModalOpen(true);
-    }
-
     const handleTabChange = (tab) => {
     if (tab === active) return;
 
@@ -233,7 +225,7 @@ function Profile() {
                                         loading='eager'
                                         decoding='async'
                                         onLoad={(e) => e.target.classList.add('loaded')}
-                                        onClick={()=> openModal(display[key], index)}
+                                        onClick={() => navigate(`/${active}`)}
                                     />
                                 </section>
                             </picture>
@@ -248,13 +240,6 @@ function Profile() {
             <div className='icons'><span style={{display:'flex', marginTop:'3%'}}><SlLocationPin className='contact-icon'/>&nbsp;<span>Location: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>New York, NY</span></span></span><span style={{display:'flex'}}><GiEnvelope className='contact-icon'/>&nbsp;<span>Email: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>peter.felix23@gmail.com</span></span></span><span style={{display:'flex'}}><IoPhonePortraitOutline className='contact-icon'/>&nbsp;<span>Call: <br /> <span style={{color: 'rgb(23, 107, 155)', fontSize:'14px'}}>+1 (718) 736-3969</span></span></span>
                   </div>
             </div>  
-            <PreviewModal
-            isOpen={isModalOpen}
-            images={modalImages}
-            index={currentIndex}
-            setIndex={setCurrentIndex}
-            onClose={() => setIsModalOpen(false)}
-            /> 
             {showArrow && (
             <div className='home' onClick={() => scrollToSection(homeRef)}>
                 <FaArrowCircleUp className='arrow' />
