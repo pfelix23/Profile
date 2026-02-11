@@ -19,7 +19,7 @@ function Fairjob () {
     useEffect(() => {
         const interval = setInterval(() => {
         setIndex(prev => (prev + 1) % display[active].length);
-    }, 3000);
+    }, 3100);
 
     return () => clearInterval(interval);
     }, [active]);
@@ -39,22 +39,31 @@ function Fairjob () {
                     <h4>&nbsp;&nbsp;/&nbsp;&nbsp;{active} Web Details</h4>
                 </section>
             </div>
+            <div className='tabs'><div className='tab-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {navigate('/FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {navigate('/EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {navigate('/Elitebnb')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {navigate('/Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {navigate('/mBolden-Change')}}>mBolden</span></div></div>
             <div className="containers">
                 <div className="container-one">
                     <section>
                         <div className="detail-container">
                             <picture className='picture-container'>
-                                <img 
-                                    key={index} 
-                                    className="detail-image slide-in" 
-                                    src={display[active][index].src} alt="" 
-                                    onClick={()=> openModal(display[active], index)}
-                                />
-                                <div>
-                                    <span onClick={() => setIndex(0)} className={`dot ${index === 0 ? 'active' : ''}`}></span>
-                                    <span onClick={() => setIndex(1)} className={`dot ${index === 1 ? 'active' : ''}`}></span>
-                                    <span onClick={() => setIndex(2)} className={`dot ${index === 2 ? 'active' : ''}`}></span>
-                                    <span onClick={() => setIndex(3)} className={`dot ${index === 3 ? 'active' : ''}`}></span>
+                                <div className="image-stack">
+                                    {display[active].map((img, i) => (
+                                        <img 
+                                            key={i} 
+                                            className={`detail-image ${index === i ? 'visible' : ''}`} 
+                                            src={img.src} alt="" 
+                                            onClick={()=> openModal(display[active], i)}
+                                        />
+                                    ))}
+                                </div>
+                                <div className="dots">
+                                    {display[active].map((_, i) => (
+                                        <span
+                                            key={i}
+                                            onClick={() => setIndex(i)}
+                                            className={`dot ${index === i ? 'active' : ''}`}
+                                        >
+                                        </span>
+                                    ))}
                                 </div>
                             </picture>
                         </div>

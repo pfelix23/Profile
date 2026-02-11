@@ -1,7 +1,7 @@
 .root-details {
     width: 100%;
     background-color: #f5f8fd;
-    overflow-y: auto;
+    overflow: visible;
     scrollbar-width: none; 
    -ms-overflow-style: none; 
 }
@@ -19,6 +19,7 @@
 .header > h2 {
     font-weight: 200;
     font-size: 28px;
+    margin-left: 9px;
 }
 .header > section > h4 {
     font-weight: 400;
@@ -38,10 +39,12 @@
     border: 1px solid rgb(23, 107, 155);
     border-radius: 50%;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease-in-out;
     cursor: pointer;
 }
-
+.dots {
+    margin-top: -20px;
+}
 .button-15 {
     background-image: linear-gradient(#42A1EC, #0070C9);
     border: 1px solid #0077CC;
@@ -73,20 +76,20 @@
 }
 
 .button-15:hover {
-  background-image: linear-gradient(#51A9EE, #147BCD);
-  border-color: #1482D0;
-  text-decoration: none;
+    background-image: linear-gradient(#51A9EE, #147BCD);
+    border-color: #1482D0;
+    text-decoration: none;
 }
 
 .button-15:active {
-  background-image: linear-gradient(#3D94D9, #0067B9);
-  border-color: #006DBC;
-  outline: none;
+    background-image: linear-gradient(#3D94D9, #0067B9);
+    border-color: #006DBC;
+    outline: none;
 }
 
 .button-15:focus {
-  box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
-  outline: none;
+    box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+    outline: none;
 }
 
 .dot.active {
@@ -94,12 +97,18 @@
 }
 .picture-container {
     position: relative;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 0px 10px 10px 10px; 
 }
+.image-stack {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+}
+
 .detail-container {
     display: flex;
     justify-content: center;
@@ -107,10 +116,25 @@
     width: 100%;
 }
 .detail-image {
+    position: absolute;
+    top: 0;
+    left: 10px;
     width: 100%;
     border-radius: 12px;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    object-fit: cover;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(-70px) scale(0.98);
+
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+.detail-image.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
 }
 .detail-image:hover {
     cursor: pointer;
@@ -157,6 +181,7 @@
     padding: 10px;
     font-family: "Raleway", sans-serif;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 15px;
 }
 .project-details > p {
     font-weight: 400;
@@ -181,15 +206,26 @@
 .tech-tile:hover {
     transform: scale(1.08);
 }
-
-
-@keyframes slideIn {
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.tabs {
+    width: 57.5%;
+    margin-left: 10px;
 }
+.tab-div {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
+}
+.tab-div > span.active {
+    color: #20A4F3;
+}
+.tab-div > span:hover {
+    cursor: pointer;
+    color: #20A4F3;
+}
 
 @media (max-width: 932px) {
     .containers {
@@ -207,6 +243,13 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 10px;
+    }
+    .picture-container {
+        width: 95vw;
+    }
+     .dots {
+        margin-bottom: 20px;
+        margin-top: -20px;
     }
 }
 
@@ -234,6 +277,35 @@
     }
     .header > h2 {
         margin-bottom: -5px;
+        margin-left: 0;
+    }
+    .detail-image {
+        height: 100%;
+    }
+    .picture-container {
+        width: 95vw;
+    }
+     .dots {
+        margin: 10px;
+
+    }
+    .tabs {
+        width: 80%;
+    }
+}
+
+@media (max-width: 520px) {
+    .tabs {
+        width: 95%;
+        margin-left: -.1px;     
+        padding-left: 4px;   
+    }
+    .picture-container {
+        width: 95vw;
+    }
+    .dots {
+        margin: 10px;
+
     }
 
 }

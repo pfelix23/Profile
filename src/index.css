@@ -1,12 +1,26 @@
 /* TODO: Add sitewide styles */
-body {
-    padding: 0;
+body, html {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; 
 }
 
 #root {
     display: flex;
     flex-direction: row;
-    height: 100vh;
-    overflow: hidden;
+    height: 100dvh;   
+    overflow: hidden;  
+}
+
+.root-details {
+    flex: 1;                          
+    overflow-y: auto;                 
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.root-details::-webkit-scrollbar {
+    display: none;
 }
