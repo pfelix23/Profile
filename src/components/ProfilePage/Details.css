@@ -247,9 +247,15 @@
     .picture-container {
         width: 95vw;
     }
-     .dots {
+    .dots {
         margin-bottom: 20px;
         margin-top: -20px;
+    }
+    .project-information {
+        width: 91%;
+    }
+    .project-details {
+        width: 91%;
     }
 }
 
@@ -263,12 +269,18 @@
         height: fit-content;
     }
     .container-two {
-        width: fit-content;
+        width: 100vw;
         height: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;
-            margin-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    .project-information {
+        width: 91%;
+    }
+    .project-details {
+        width: 91%;
     }
     .header {
         display: flex;
@@ -306,6 +318,12 @@
     .dots {
         margin: 10px;
 
+    }
+    .project-information {
+        width: 90%;
+    }
+    .project-details {
+        width: 90%;
     }
 
 }
