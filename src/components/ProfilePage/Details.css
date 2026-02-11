@@ -220,11 +220,11 @@
 
 }
 .tab-div > span.active {
-    color: #20A4F3;
+    color: rgb(23, 107, 155);
 }
 .tab-div > span:hover {
     cursor: pointer;
-    color: #20A4F3;
+    color: rgb(23, 107, 155);
 }
 
 @media (max-width: 932px) {
