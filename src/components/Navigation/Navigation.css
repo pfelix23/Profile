@@ -81,7 +81,7 @@
     .root-div {
         position:fixed;
         z-index: 9990; 
-        transition: transform .3s ease-in-out
+        transition: transform .45s ease-in-out
     }
     .nav-open {
         transform: translateX(0);
@@ -100,7 +100,7 @@
     .root-div {
         position:fixed;
         z-index: 9990; 
-        transition: transform .55s ease-in-out
+        transition: transform .45s ease-in-out
     }
     .nav-open {
         transform: translateX(0);
