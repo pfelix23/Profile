@@ -21,7 +21,7 @@ export const AppContextProvider = ({ children }) => {
       const container = document.querySelector('.root');
       const style = window.getComputedStyle(sectionRef.current);
       const hasTransform = style.transform !== 'none'; 
-      const yOffset = hasTransform ? -20 : 0;
+      const yOffset = hasTransform ? -10 : 0;
 
       const y = sectionRef.current.offsetTop + yOffset;
 
