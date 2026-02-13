@@ -16,26 +16,35 @@ export const AppContextProvider = ({ children }) => {
     const [visible, setVisible] = useState(false);
 
     const scrollToSection = (sectionRef) => {
-        sectionRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-    };
+      if (!sectionRef.current) return;
 
-  return (
-    <AppContext.Provider value={{ 
-        Profile, 
-        Navigation,
-        homeRef,
-        aboutRef,
-        skillsRef,
-        resumeRef,
-        portfolioRef,
-        contactRef,
-        visible,
-        setVisible,
-        scrollToSection }}>
-      {children}
-    </AppContext.Provider>
-  );
+      const container = document.querySelector('.root');
+      const style = window.getComputedStyle(sectionRef.current);
+      const hasTransform = style.transform !== 'none'; 
+      const yOffset = hasTransform ? -35 : 0;
+
+      const y = sectionRef.current.offsetTop + yOffset;
+
+      container.scrollTo({
+        top: y,
+        behavior: 'smooth',
+      });
+    };    
+
+    return (
+      <AppContext.Provider value={{ 
+          Profile, 
+          Navigation,
+          homeRef,
+          aboutRef,
+          skillsRef,
+          resumeRef,
+          portfolioRef,
+          contactRef,
+          visible,
+          setVisible,
+          scrollToSection }}>
+        {children}
+      </AppContext.Provider>
+    );
 };
