@@ -19,7 +19,7 @@ function Equitrack () {
     useEffect(() => {
         const interval = setInterval(() => {
         setIndex(prev => (prev + 1) % display[active].length);
-    }, 3100);
+    }, 2500);
 
     return () => clearInterval(interval);
     }, [active]);
