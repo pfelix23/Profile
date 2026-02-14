@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
 import { FaHome } from "react-icons/fa";
@@ -14,16 +14,38 @@ import './Navigation.css';
 function Navigation() {
     const [active, setActive] = useState('FaHome');
     const [switchActive, setSwitchActive] = useState('FaHome');
+    const navRef = useRef(null);
     const navigate = useNavigate();
-    const { scrollToSection, homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, visible, setVisible } = useAppContext();
+    const { scrollToSection, homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, visible, setVisible } = useAppContext();
     const switchButton = (view) => {
         setActive(view)
         setSwitchActive(view)
     };
     {switchActive}
+
+    useEffect(() => {
+        
+        const handleClickOutside = (e) => {
+        
+            if(!visible) return;
+
+            const clickOutsideNav = navRef.current && !navRef.current.contains(e.target);
+
+            const clickOutsideMenu = menuRef.current && !menuRef.current.contains(e.target);
+
+            if(clickOutsideMenu && clickOutsideNav) {
+                setVisible(false)
+            }
+        }
+
+        document.addEventListener('click', handleClickOutside)
+
+        return () => document.removeEventListener('click', handleClickOutside)
+        
+    }, [visible])
        
     return (
-        <div className={`root-div ${visible ? 'nav-open': 'nav-close'}`}>
+        <div ref={navRef} className={`root-div ${visible ? 'nav-open': 'nav-close'}`}>
             <nav className='nav-bar'>
                 <div className='img-container'>
                 <img id='peter' src="/IMG_4299-cropped.jpg" alt="Peter" />

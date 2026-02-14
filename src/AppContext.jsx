@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
     const resumeRef = useRef(null);
     const portfolioRef = useRef(null);
     const contactRef = useRef(null);
+    const menuRef = useRef(null);
     const [visible, setVisible] = useState(false);
 
     const scrollToSection = (sectionRef) => {
@@ -50,6 +51,7 @@ export const AppContextProvider = ({ children }) => {
           resumeRef,
           portfolioRef,
           contactRef,
+          menuRef,
           visible,
           setVisible,
           scrollToSection }}>
