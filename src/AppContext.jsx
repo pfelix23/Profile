@@ -21,7 +21,7 @@ export const AppContextProvider = ({ children }) => {
       const container = document.querySelector('.root');
       const style = window.getComputedStyle(sectionRef.current);
       const hasTransform = style.transform !== 'none'; 
-      const isMobile = window.innerWidth <= 768;
+      const isMobile = window.innerWidth <= 932;
       let yOffset = 0;
 
       if (hasTransform) {
