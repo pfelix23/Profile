@@ -191,7 +191,7 @@ function Profile() {
                     <li>Built reusable file preview modal with conditional routing for Office documents and internal proxying, enabling seamless in-app file viewing and downloads.</li><br />
                     <li>Implemented an authentication-aware networking workflow, dynamically verifying connection status and managing pending, sent, and accepted states via secure API integrations.</li><br />
                     <li>Developed a reusable connection search component with real-time filtering, dropdown state management, and outside-click detection to improve user discoverability.</li><br />
-                    <li>Collaborated with engineers to integrate production-ready UI components into a shared codebase while maintaining clean separation of concerns.</li>
+                    <li>Performed QA validation on production-ready builds using Playwright, testing critical user workflows across browsers and ensuring release readiness.</li>
                 </ul> 
             </span>
             </div>
