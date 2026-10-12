@@ -25,23 +25,6 @@ function Profile() {
     const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, scrollToSection, visible, setVisible } = useAppContext();
     
     useEffect(() => {
-        const allImages = [
-            ...FairJobPics,
-            ...EquiTrackPics,
-            ...ElitebnbPics,
-            ...FluxPics,
-            ...mBoldenPics
-        ];
-
-        allImages.forEach(({src}) => {
-            const image = new Image();
-            image.src = src;
-
-            image.decode?.().catch(() => {});
-        })
-    }, []);
-    
-    useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 
@@ -222,8 +205,6 @@ function Profile() {
                                         className='elites'
                                         src={all.src} 
                                         alt=''
-                                        loading='eager'
-                                        decoding='async'
                                         onLoad={(e) => e.target.classList.add('loaded')}
                                         onClick={() => navigate(`/${active}`)}
                                     />
