@@ -24,52 +24,49 @@ function Profile() {
     const FairJobPics = [{src:'Screenshot 2026-01-11 101554.png', href: "https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101522.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101433.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101319.png', href:"https://www.lvcfairjob.com/"}]
     const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, scrollToSection, visible, setVisible, setActive } = useAppContext();
     
-    
+    useEffect(() => {
+        const sections = [
+            { ref: homeRef, name: 'FaHome' },
+            { ref: aboutRef, name: 'FaUserTie' },
+            { ref: skillsRef, name: 'FaBookReader' },
+            { ref: resumeRef, name: 'IoDocumentText' },
+            { ref: portfolioRef, name: 'FaBook' },
+            { ref: contactRef, name: 'GiEnvelope' }
+        ];
 
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentSection = sections.find(
+                            section => section.ref.current === entry.target
+                        );
 
-useEffect(() => {
-    const sections = [
-        { ref: homeRef, name: 'FaHome' },
-        { ref: aboutRef, name: 'FaUserTie' },
-        { ref: skillsRef, name: 'FaBookReader' },
-        { ref: resumeRef, name: 'IoDocumentText' },
-        { ref: portfolioRef, name: 'FaBook' },
-        { ref: contactRef, name: 'GiEnvelope' }
-    ];
-
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const currentSection = sections.find(
-                        section => section.ref.current === entry.target
-                    );
-
-                    if (currentSection) {
-                        setActive(currentSection.name);
+                        if (currentSection) {
+                            setActive(currentSection.name);
+                        }
                     }
-                }
-            });
-        },
-        { threshold: 0.35 }
-    );
+                });
+            },
+            { threshold: 0.35 }
+        );
 
-    sections.forEach(({ ref }) => {
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
-    });
+        sections.forEach(({ ref }) => {
+            if (ref.current) {
+                observer.observe(ref.current);
+            }
+        });
 
-    return () => observer.disconnect();
-    }, [
-        homeRef,
-        aboutRef,
-        skillsRef,
-        resumeRef,
-        portfolioRef,
-        contactRef,
-        setActive
-    ]);
+        return () => observer.disconnect();
+        }, [
+            homeRef,
+            aboutRef,
+            skillsRef,
+            resumeRef,
+            portfolioRef,
+            contactRef,
+            setActive
+        ]);
             
     useEffect(() => {
         const observer = new IntersectionObserver(
