@@ -13,7 +13,7 @@ function Profile() {
     const [text, setText] = useState('');
     const [typeIndex, setTypeIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
-    const [active, setActive] = useState('FairJob');
+    const [activeProject, setActiveProject] = useState('FairJob');
     const [showArrow, setShowArrow] = useState(false);
     const navigate = useNavigate();
     const types = ['full-stack', 'back-end', 'front-end'];
@@ -22,8 +22,55 @@ function Profile() {
     const FluxPics = [{src:'Screenshot 2025-02-04 133300.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133429.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133451.png', href: "https://flux-p.onrender.com"},{src:'Screenshot 2025-02-04 133535.png', href: "https://flux-p.onrender.com"}];
     const mBoldenPics = [{src:'Screenshot 2025-06-10 121855.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 121921.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 121954.png', href: "https://www.mboldenchange.org/"}, {src:'Screenshot 2025-06-10 122026.png', href: "https://www.mboldenchange.org/"}];
     const FairJobPics = [{src:'Screenshot 2026-01-11 101554.png', href: "https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101522.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101433.png', href:"https://www.lvcfairjob.com/"}, {src:'Screenshot 2026-01-11 101319.png', href:"https://www.lvcfairjob.com/"}]
-    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, scrollToSection, visible, setVisible } = useAppContext();
+    const { homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, scrollToSection, visible, setVisible, setActive } = useAppContext();
     
+    
+
+
+useEffect(() => {
+    const sections = [
+        { ref: homeRef, name: 'FaHome' },
+        { ref: aboutRef, name: 'FaUserTie' },
+        { ref: skillsRef, name: 'FaBookReader' },
+        { ref: resumeRef, name: 'IoDocumentText' },
+        { ref: portfolioRef, name: 'FaBook' },
+        { ref: contactRef, name: 'GiEnvelope' }
+    ];
+
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentSection = sections.find(
+                        section => section.ref.current === entry.target
+                    );
+
+                    if (currentSection) {
+                        setActive(currentSection.name);
+                    }
+                }
+            });
+        },
+        { threshold: 0.35 }
+    );
+
+    sections.forEach(({ ref }) => {
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+    });
+
+    return () => observer.disconnect();
+    }, [
+        homeRef,
+        aboutRef,
+        skillsRef,
+        resumeRef,
+        portfolioRef,
+        contactRef,
+        setActive
+    ]);
+            
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -120,11 +167,11 @@ function Profile() {
     };
 
     const handleTabChange = (tab) => {
-    if (tab === active) return;
+    if (tab === activeProject) return;
 
     
     setTimeout(() => {
-        setActive(tab)
+        setActiveProject(tab)
       }, 10); 
     };
 
@@ -193,11 +240,11 @@ function Profile() {
             <div className='portfolio-spacing' style={{backgroundColor:'#f8f9fa'}} ref={portfolioRef}><h2 className='half-underline' style={{marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'32px', color: 'rgb(23, 107, 155)', paddingBottom:'10px'}}>Portfolio</h2>
             <p style={{lineHeight:'1.4', marginLeft:'2%', fontFamily:'"Open Sans", sans-serif', fontSize:'17px', color:'#3e3f41', paddingRight:'5px'}}>Welcome to my portfolio! Below, you&apos;ll find a curated selection of snapshots showcasing some of the projects I&apos;ve worked on recently. Each project highlights my skills in full stack development, illustrating my expertise in both front-end and back-end technologies. Completely innovative web applications and dynamic websites , these examples demonstrate my ability to design, develop, and deploy user-centric solutions. <br /> <br />
             Feel free to explore the various projects to get a better understanding of my work process, the challenges I tackled, and the creative solutions I implemented.</p>
-            <div className='portfolio-container'><div className='portfolio-div'><span className={`${active === 'FairJob'? 'active' : ''}`} onClick={() => {handleTabChange('FairJob')}}>FairJob</span><span className={`${active === 'EquiTrack'? 'active' : ''}`} onClick={() => {handleTabChange('EquiTrack')}}>EquiTrack</span><span className={`${active === 'Elitebnb'? 'active' : ''}`} onClick={() => {handleTabChange('Elitebnb')}}>Elitebnb</span><span className={`${active === 'Flux'? 'active' : ''}`} onClick={() => {handleTabChange('Flux')}}>Flux</span><span className={`${active === 'mBolden-Change'? 'active' : ''}`} onClick={() => {handleTabChange('mBolden-Change')}}>mBolden</span></div></div>
+            <div className='portfolio-container'><div className='portfolio-div'><span className={`${activeProject === 'FairJob'? 'active' : ''}`} onClick={() => {handleTabChange('FairJob')}}>FairJob</span><span className={`${activeProject === 'EquiTrack'? 'active' : ''}`} onClick={() => {handleTabChange('EquiTrack')}}>EquiTrack</span><span className={`${activeProject === 'Elitebnb'? 'active' : ''}`} onClick={() => {handleTabChange('Elitebnb')}}>Elitebnb</span><span className={`${activeProject === 'Flux'? 'active' : ''}`} onClick={() => {handleTabChange('Flux')}}>Flux</span><span className={`${activeProject === 'mBolden-Change'? 'active' : ''}`} onClick={() => {handleTabChange('mBolden-Change')}}>mBolden</span></div></div>
             <section className="picture-section">
                <div className='project-card-wrapper'>
                 {Object.entries(display).map(([key, images]) => (
-                    <div key={key} className={`elite-card project-card ${active === key ? 'visible' : 'hidden'}`}>
+                    <div key={key} className={`elite-card project-card ${activeProject === key ? 'visible' : 'hidden'}`}>
                         {images.map((all, index) => (
                             <picture className='elite-section fade-slide-scale' key={index} style={{ transitionDelay: `${index * 10}ms` }}>
                                 <section>
@@ -206,7 +253,7 @@ function Profile() {
                                         src={all.src} 
                                         alt=''
                                         onLoad={(e) => e.target.classList.add('loaded')}
-                                        onClick={() => navigate(`/${active}`)}
+                                        onClick={() => navigate(`/${key}`)}
                                     />
                                 </section>
                             </picture>

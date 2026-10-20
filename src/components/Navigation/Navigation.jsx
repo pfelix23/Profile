@@ -12,11 +12,10 @@ import { SiRefinedgithub } from "react-icons/si";
 import './Navigation.css';
 
 function Navigation() {
-    const [active, setActive] = useState('FaHome');
     const [switchActive, setSwitchActive] = useState('FaHome');
     const navRef = useRef(null);
     const navigate = useNavigate();
-    const { scrollToSection, homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, visible, setVisible } = useAppContext();
+    const { scrollToSection, homeRef, aboutRef, skillsRef, resumeRef, portfolioRef, contactRef, menuRef, visible, setVisible, active, setActive } = useAppContext();
     const switchButton = (view) => {
         setActive(view)
         setSwitchActive(view)

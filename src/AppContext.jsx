@@ -15,6 +15,7 @@ export const AppContextProvider = ({ children }) => {
     const contactRef = useRef(null);
     const menuRef = useRef(null);
     const [visible, setVisible] = useState(false);
+    const [active, setActive] = useState('FaHome');
 
     const scrollToSection = (sectionRef) => {
       if (!sectionRef.current) return;
@@ -54,6 +55,8 @@ export const AppContextProvider = ({ children }) => {
           menuRef,
           visible,
           setVisible,
+          active, 
+          setActive,
           scrollToSection }}>
         {children}
       </AppContext.Provider>
