@@ -34,6 +34,22 @@
   height: auto;
   object-fit: contain;
   border-radius: 20px;
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+#modal-content img.fade-out {
+  opacity: 0;
+  transform: translateX(-200px);
+}
+
+#modal-content img.fade-out-two {
+  opacity: 0;
+  transform: translateX(200px);
+}
+
+#modal-content img.fade-in {
+  opacity: 1;
 }
 
 #modalImage-container {

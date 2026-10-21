@@ -1,18 +1,32 @@
 import './PreviewModal.css';
 import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
+import { useState } from 'react';
 
 
 function PreviewModal({isOpen, images, index, onClose, setIndex}) {
+    const [isFading, setIsFading] = useState(false);
+    const [isClass, setIsClass] = useState('');
+
     if(!isOpen) return null;
 
-    const next = () => {
-        setIndex((index + 1) % images.length)
-    }
+    const changeImage = (direction) => {
+        if (isFading) return;
 
-    const prev = () => {
-        setIndex((index - 1 + images.length) % images.length)
-    }
+        setIsFading(true);
+        setIsClass(direction === 1 ? 'fade-out-two' : 'fade-out');
+
+        const newIndex = (index + direction) % images.length;
+
+        setTimeout(() => {
+            setIndex(newIndex);
+            setIsFading(false);
+        }, 250);
+    };
+
+    const next = () => changeImage(1);
+
+    const prev = () => changeImage(-1);
 
     return (
         <div id="modal">
@@ -23,7 +37,11 @@ function PreviewModal({isOpen, images, index, onClose, setIndex}) {
             </div>
             <div id='modalImage-container' onClick={onClose}>
             <a href={images[index].href} target='blank' rel='noreFerrer'>
-                <img src={images[index].src} alt="" />
+                <img 
+                src={images[index].src} 
+                className={isFading ? `${isClass}` : `fade-in`}
+                alt="" 
+                />
             </a>
             </div>
             <div className='modalButton-container' onClick={onClose}>
