@@ -16,7 +16,7 @@ function PreviewModal({isOpen, images, index, onClose, setIndex}) {
         setIsFading(true);
         setIsClass(direction === 1 ? 'fade-out-two' : 'fade-out');
 
-        const newIndex = (index + direction) % images.length;
+        const newIndex = (index + direction + images.length) % images.length;
 
         setTimeout(() => {
             setIndex(newIndex);
