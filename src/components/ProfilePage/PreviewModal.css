@@ -40,12 +40,24 @@
 
 #modal-content img.fade-out {
   opacity: 0;
-  transform: translateX(-200px);
+  transform: translateX(-80px);
 }
 
 #modal-content img.fade-out-two {
   opacity: 0;
-  transform: translateX(200px);
+  transform: translateX(80px);
+}
+
+@media (max-width: 932px) {
+  #modal-content img.fade-out {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  #modal-content img.fade-out-two {
+    opacity: 0;
+    transform: translateX(30px);
+  }
 }
 
 #modal-content img.fade-in {
