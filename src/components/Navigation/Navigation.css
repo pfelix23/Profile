@@ -42,12 +42,17 @@
 .nav-links > span {
     padding: 18px 20px;
     width: fit-content;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 1369px) {
     .nav-links > span {
         padding: 12px 14px;
         width: fit-content;
+    }
+    .homey {
+        height: 18px;
     }
 }
 #github-span, #linkedIn-span {
