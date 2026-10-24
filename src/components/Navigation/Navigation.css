@@ -54,9 +54,12 @@
     .homey {
         height: 18px;
     }
+    .contacting {
+        height: 19.5px;
+    }
 }
 #github-span, #linkedIn-span {
-    border-radius: 50%;
+    border-radius: 10px;
     background-color: rgb(44, 44, 44);
     padding: 7.5px 9.5px;
 }

@@ -57,7 +57,7 @@ function Navigation() {
                 <span className={`${active === 'FaBookReader' ? 'active' : ''}`} onClick={() => {navigate('/'); switchButton('FaBookReader'); setVisible(!visible); setTimeout(() => {scrollToSection(skillsRef)}, 50)}}><FaBookReader className="icon"/>&nbsp;&nbsp;<span style={{fontSize:'17px'}}>Skills</span></span>
                 <span className={`${active === 'IoDocumentText' ? 'active' : ''}`} onClick={() => {navigate('/'); switchButton('IoDocumentText'); setVisible(!visible); setTimeout(() => {scrollToSection(resumeRef)}, 50)}}><IoDocumentText className="icon"/>&nbsp;&nbsp;<span style={{fontSize:'17px'}}>Resume</span></span>
                 <span className={`${active === 'FaBook' ? 'active' : ''}`} onClick={() => {navigate('/'); switchButton('FaBook'); setVisible(!visible); setTimeout(() => {scrollToSection(portfolioRef)}, 50)}}><FaBook className="icon"/>&nbsp;&nbsp;<span style={{fontSize:'17px'}}>Portfolio</span></span>
-                <span className={`${active === 'GiEnvelope' ? 'active' : ''}`} onClick={() => {navigate('/'); switchButton('GiEnvelope'); setVisible(!visible); setTimeout(() => {scrollToSection(contactRef)}, 50)}}><GiEnvelope className="icon"/>&nbsp;&nbsp;<span style={{fontSize:'17px'}}>Contact</span></span>
+                <span className={`${active === 'GiEnvelope' ? 'active' : ''}`} onClick={() => {navigate('/'); switchButton('GiEnvelope'); setVisible(!visible); setTimeout(() => {scrollToSection(contactRef)}, 50)}}><GiEnvelope className="icon contacting"/>&nbsp;&nbsp;<span style={{fontSize:'17px'}}>Contact</span></span>
                 </div>
             </nav>
         </div>
